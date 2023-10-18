@@ -1,0 +1,67 @@
+@import "../../../styleMain.css";
+
+.bookRow1{
+    background: #3eafb8;
+    height: 242px;
+    text-align: right;
+
+}
+.bookRow2{
+    background: #002d3e;
+    height: 242px;
+    text-align: right;
+
+}
+.bookRow3{
+    background: goldenrod;
+    height: 242px;
+    text-align: right;
+
+}
+.bookRow4{
+    background: #543737;
+    height: 242px;
+    text-align: right;
+
+}
+.imageBook{
+    width: 86% !important;
+    margin-top: 15%;
+    height: 250px;
+    box-shadow: -2px 6px 19px 0px #7f818e;
+    transition: 0.3s ease;
+}
+
+.pBook{
+    font-size: 20px;
+    color: white;
+    margin: 19% 22px 20px 0 !important
+
+}
+
+.book-DowenLoad{
+    font-size: 20px;
+    background: white;
+    color: orange;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-top: 11px;
+}
+
+.dowenloadDive{
+    position: absolute;
+    bottom: 0;
+    right: 9%;
+}
+
+.book-DowenLoad{
+    font-size: 20px;
+    background: white;
+    color: orange;
+    padding: 7px 12px;
+    border-radius: 30px;
+    margin-right: 20px;
+    margin-top: 11px;
+    font-weight: bold;
+}

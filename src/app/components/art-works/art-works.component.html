@@ -1,0 +1,22 @@
+
+<section class="blog-wrap-layout1">
+    <div class="container">
+      <h2 class="item-heading" style="margin-top:5%">{{headers}}</h2>
+      <div class="row gutters-40" dir="rtl">
+        <div class="col-lg-4" *ngFor="let item of artWorkArr">
+          <div class="blog-box-layout1 text-left">
+            <div class="item-img">
+              <img src="{{item.image}}" alt="blog" style="width: 100%; height: 250px">
+            </div>
+            <div class="item-content text-right">
+              <ul class="entry-meta meta-color-dark">
+                <li><i class="fa fa-tag"></i>{{item.TypeName}}</li>
+                <li><i class="fa fa-calendar"></i>{{item.Date | date: 'dd-MM-yyyy'}}</li>
+              </ul>
+              <h3 class="item-title"><a>{{item.Name}}</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

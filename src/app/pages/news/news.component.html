@@ -1,0 +1,53 @@
+<div class="mainDiv" infiniteScroll [infiniteScrollDistance]="3" style="background: #f7f8fa"
+    [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <div class="container">
+        <div class="row formStyle">
+            <div class="col-md-12 inputControl">
+                <input [formControl]="queryField" placeholder="ابحث عن الخبر" [(ngModel)]="name" name="name" type="text"
+                    class="form-control inputSearch">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12   no-equal-item" (click)="goToDet(item.Id)" [ngClass]="{
+                    'pull-left' : lang === 2 || lang === 2,
+                    'text-left' : lang === 2 || lang === 3,
+                    'pull-right' : lang === 1 ,
+                    'text-right' : lang === 1
+                }" *ngFor="let item of newsArr">
+                <div class="blog-box-layout5">
+                    <div class="item-img">
+                        <a><img src="{{item.ImagePath}}" alt="Blog"></a>
+                        <a class="hover-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="item-content ">
+                        <ul class="entry-meta meta-color-dark">
+
+                            <li style="margin-left:0"><i *ngIf="lang == 2" style="margin-right: 8px;"
+                                    class="fa fa-calendar"></i>{{item.Date | date: 'dd-MM-yyyy'}}<i *ngIf="lang == 1"
+                                    class="fa fa-calendar"></i></li>
+
+                        </ul>
+                        <h3 class="item-title">
+                            <a>
+                                {{item.Title}}
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.9)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

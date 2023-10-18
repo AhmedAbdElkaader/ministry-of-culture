@@ -1,0 +1,68 @@
+<div class="mainDiv" style="background: #f7f8fa" *ngIf="!arrayNotEmpty">
+    <div class="container">
+        <div class="row formStyle">
+            <div class="col-md-12 inputControl">
+                <input [formControl]="queryField" placeholder="ابحث عن الفيديو" [(ngModel)]="name" name="name"
+                    type="text" class="form-control inputSearch">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div class="row  latestsBooks" *ngIf="showHightLighted">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 no-equal-item" 
+            [ngClass]="{
+                'pull-left' : lang === 2 || lang === 2,
+                'text-left' : lang === 2 || lang === 3,
+                'pull-right' : lang === 1 ,
+                'text-right' : lang === 1
+            }"
+            *ngFor="let item of latestsvideos">
+                <div class="blog-box-layout5" (click)="goToDet(item.Id)">
+                    <div class="item-img">
+                        <a ><img src="{{item.Image}}" alt="Blog"></a>
+                        <a  class="hover-icon">
+                            <i class="fa fa-play"></i> </a>
+                    </div>
+                    <div class="item-content">
+                        <h3 class="item-title">
+                            <a >
+                                {{item.Name}} </a>
+                        </h3>
+                        <div class="lastBook">
+                            <h6>أبرز الفيديوهات</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()">
+            <div class="row ">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 no-equal-item"
+                [ngClass]="{
+                    'pull-left' : lang === 2 || lang === 2,
+                    'text-left' : lang === 2 || lang === 3,
+                    'pull-right' : lang === 1 ,
+                    'text-right' : lang === 1
+                }"
+                (click)="goToDet(item.Id)"
+                *ngFor="let item of videosArr">
+                    <div class="blog-box-layout5">
+                        <div class="item-img">
+                            <a ><img src="{{item.Image}}" alt="Blog"></a>
+                            <a  class="hover-icon">
+                                <i class="fa fa-play"></i> </a>
+                        </div>
+                        <div class="item-content ">
+                            <h3 class="item-title">
+                                <a>
+                                    {{item.Name}} </a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+       
+            </div>
+        </div>
+    </div>
+</div>
+

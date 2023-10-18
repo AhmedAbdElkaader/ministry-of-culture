@@ -1,0 +1,78 @@
+<!-- <div class="section-default" [ngClass]="bntStyle" *ngIf="showNews">
+  <div class="container">
+    <h2 class="ui-title-bg">{{header}}</h2>
+    <div class="row">
+      <div class="col-md-3" [ngClass]="{
+        'pull-left' : lang === 2 || lang === 3,
+        'text-left' : lang === 2 || lang === 3,
+        'pull-right' : lang === 1 || lang === 1,
+        'text-right' : lang === 1 || lang === 1
+      }" *ngFor="let item of newsArr" style="height: 290px;">
+        <div class="decor-right bg-4"></div>
+        <article class="post post-2 post-2_mod-c  wow fadeInDown" data-wow-delay="0.25s">
+          <div class="entry-media">
+            <img src="{{item.image}}" alt="Foto" class="img-responsive" (click)="gottoDet(item.ID)"
+              style="cursor: pointer">
+            <span [ngClass]="catgStyle" (click)="goToCatList(item.Category_Id)"><a>{{item.Category_Name}}</a></span>
+          </div>
+          <div class="entry-main">
+            <div class="entry-header">
+              <h2 class="entry-title" (click)="gottoDet(item.ID)">{{item.Name}}</h2>
+            </div>
+            <div class="entry-meta">
+              <span *ngIf="lang == 2"><i style="margin-right: 5px" class="fa fa-calendar"></i></span>
+              <span class="entry-meta__item">{{item.Date | date: 'dd-MM-yyyy'}}</span>
+              <span *ngIf="lang == 1"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col-md-3">
+              <aside class="sidebar">
+                <section class="widget ">
+                  <h2 class="widget-title ui-title-inner text-right">التصنيفات</h2>
+                  <hr>
+                  <div class="widget-content">
+                    <ul class="list list-mark-1 list-mark-1_mod-a">
+                      <li class="listOfCatg" [ngClass]="{'active':catregori.active}" (click)="getCatregori(catregori.Id,catregori)" *ngFor="let catregori of categorieArr">{{catregori.CategoryName}}</li>
+                    </ul>
+                  </div>
+                </section>   
+              </aside>
+            </div> -->
+
+<section class="blog-wrap-layout1" *ngIf="showNews">
+
+  <div class="container">
+    <h2 class="item-heading" style="margin-top: 5%">{{header}}</h2>
+    <div class="row gutters-40 ">
+      <div class="col-lg-4" [ngClass]="{
+        'pull-left' : lang === 2 || lang === 3,
+        'text-left' : lang === 2 || lang === 3,
+        'pull-right' : lang === 1 || lang === 1,
+        'text-right' : lang === 1 || lang === 1
+      }"  style="height: 350px" *ngFor="let item of newsArr">
+        <div class="blog-box-layout1 text-left" (click)="gottoDet(item.ID)">
+          <div class="item-img">
+            <a><img style="width: 360px; height: 200px;" src="{{item.image}}" alt="blog"></a>
+          </div>
+          <div class="item-content text-right">
+            <ul class="entry-meta meta-color-dark">
+              <li><i class="fa fa-tag" *ngIf="lang == 2" ></i>{{item.Category_Name}}<i class="fa fa-tag" *ngIf="lang == 1"></i></li>
+              <li><i class="fa fa-calendar" *ngIf="lang == 2" ></i>{{item.Date | date: 'dd-MM-yyyy'}}<i class="fa fa-calendar" *ngIf="lang == 1" ></i></li>
+            </ul>
+            <h3 class="item-title"><a>{{item.Name}}</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

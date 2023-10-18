@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="buttonStyle">
+        <button class="btn" [ngClass]="{'btn-primary': !showMap}" (click)="showEntityMap()">خريطة الجهات</button>
+
+        <button class="btn" [ngClass]="{'btn-primary': showMap}" (click)="showEventMap()">خريطة الأحداث</button>
+    </div>
+</div>
+
+
+<agm-map *ngIf="showMap" [latitude]="latitude" (zoomChange)="zoomChange2($event)" [zoom]="zoom2"
+    [disableDefaultUI]="false" [zoomControl]="false" [longitude]="longitude">
+
+    <agm-marker *ngFor="let m of arrayOfLngAndLat; let i = index;" [latitude]="m.Lat" [longitude]="m.Lang"
+        [animation]="'BOUNCE'" (markerClick)="selectMarker2(m)" [markerDraggable]="false">
+ 
+    </agm-marker>
+</agm-map>
+
+<agm-map *ngIf="!showMap" [latitude]="lat" [zoom]="zoom" (zoomChange)="zoomChange($event)" [disableDefaultUI]="false"
+    [zoomControl]="false" [longitude]="lng">
+
+    <agm-marker *ngFor="let m of arrayOfEntity; let i = index;" (markerClick)="selectMarker(m)" [animation]="'BOUNCE'"
+        [iconUrl]="icon" [latitude]="m.lat" [longitude]="m.lng" [markerDraggable]="false">
+   
+    </agm-marker>
+</agm-map>
+
+
+<div class="card" *ngIf="showCardInfo">
+    <span (click)="close()" class="exit">x</span>
+    <h2>: اسم الفاعلية </h2>
+    <h4>{{nameOfEvent}}</h4>
+</div>
+
+<div class="card" *ngIf="card2">
+    <span (click)="close()" class="exit">x</span>
+    <p>اسم الجهه <br> {{entityName}}</p>
+    <p>عنوان <br> {{AddressEntity}}</p>
+    <p>تليفون <br> {{MobileEntity}}</p>
+    <p>بريد الكتروني  <br> {{EmailEntity}}</p>
+    <p>موقع الكتروني <br> {{webSiteEntity}}</p>
+</div>

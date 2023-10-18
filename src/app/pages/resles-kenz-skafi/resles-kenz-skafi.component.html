@@ -1,0 +1,94 @@
+<div class="mainDiv">
+    <div class="row">
+        <div class="container">
+            <div class="col">
+                <div class="row formStyle">
+                    <div class="col-md-12 inputControl">
+                        <input [formControl]="queryField" placeholder="ابحث عن الكتاب" [(ngModel)]="name" name="name"
+                            type="text" class="form-control inputSearch">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div>
+                <div class="row flex-row-reverse latestsBooks" *ngIf="contentShow">
+                    <div style="cursor: pointer ;" class="col-md-4 col-12" *ngFor="let item of latestsBooks">
+                        <div class="card cardAgin">
+                            <a href="{{item.Link}}" (click)="CountUrl(item.Id)" target="_blank"><img
+                                    src="{{item.Image}}" class="img-responsive"></a>
+                            <div>
+                                <h3 (click)="goToDet(item.Id)" class="titleOne"
+                                    [ngClass]="{'headerh3': item.Name.length > 25}">
+                                    {{item.Name}}
+                                </h3>
+                                <a href="{{item.Link}}" target="_blank" (click)="CountUrl(item.Id)">
+                                    <button class="btn btn-primary btnShow">إطلاع</button>
+                                </a>
+                            </div>
+                            <div class="lastBook">
+                                <h6>أبرز الأصدارات</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results" infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50"
+                    (scrolled)="onScroll()">
+                    <div class="row flex-row-reverse" *ngIf="contentShow">
+                        <div style="cursor: pointer ;" class="col-md-4 col-12" *ngFor="let item of Arr">
+                            <div class="card">
+                                <a href="{{item.Link}}" *ngIf="item.TypeId == 1 " (click)="CountUrl(item.Id)"
+                                    target="_blank">
+                                    <img src="{{item.Image}}" class="img-responsive">
+                                </a>
+                                <a *ngIf="item.TypeId == 3 " (click)="goToDet(item.Id)"
+                                (click)="CountUrl(item.Id)" target="_blank">
+                                    <img src="{{item.Image}}" class="img-responsive">
+                                </a>
+                                
+                                <div>
+                                    <h3  [ngClass]="{'headerh3': item.Name.length > 25}">
+                                        {{item.Name}}
+                                    </h3>
+                                    <a href="{{item.Link}}" target="_blank" (click)="CountUrl(item.Id)"
+                                        *ngIf="item.TypeId == 1 ">
+                                        <button class="btn btn-primary btnShow">إطلاع</button>
+                                    </a>
+                                    <a (click)="CountUrl(item.Id)" (click)="goToDet(item.Id)"
+                                     *ngIf="item.TypeId == 3 ">
+                                        <button class="btn btn-primary btnShow2">طلب إطلاع</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main" *ngIf="showBookMasg">
+                    <div class="masg">
+                        <h1>عفوا لا يوجد هذا الكتاب</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!--  <div class="col-2">
+            <div class="filter">
+                <h4 class="entittes">الجهات</h4>
+                <hr>
+                <div *ngFor="let item of Entites">
+                    <span>{{item.Name}}</span>
+                    <input type="checkbox" value="{{item.Name}}" (change)="onCheckEntitsChange($event,item.Id)">
+                </div>
+                <hr>
+                <h4>السلاسل</h4>
+                <hr>
+                <div *ngFor="let item of seirs">
+                    <span>{{item.Name}}</span>
+                    <input type="checkbox" value="{{item.Name}}" (change)="onCheckChange($event,item.Id)">
+                </div>
+                <hr>
+                <button class="btn btn-primary" (click)="saveList()" >حفظ</button>
+            </div>
+        </div> -->

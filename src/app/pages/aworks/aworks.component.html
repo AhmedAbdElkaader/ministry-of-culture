@@ -1,0 +1,62 @@
+<div class="mainDiv" style="background: #f7f8fa"
+ infiniteScroll [infiniteScrollDistance]="3" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <div class="container">
+        <div class="row formStyle">
+            <div class="col-md-12 inputControl">
+                <input [formControl]="queryField" placeholder="ابحث عن العمل الفني" [(ngModel)]="name" name="name"
+                    type="text" class="form-control inputSearch">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 no-equal-item"
+            [ngClass]="{
+                'pull-left' : lang === 2 || lang === 2,
+                'text-left' : lang === 2 || lang === 3,
+                'pull-right' : lang === 1,
+                'text-right' : lang === 1
+            }"
+             (click)="goToDet(item.ID)"
+            *ngFor="let item of artWorks">
+                <div class="blog-box-layout5">
+                    <div class="item-img">
+                        <a ><img src="{{item.image}}" alt="Blog"></a>
+                        <a  class="hover-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="item-content">
+                        <ul class="entry-meta meta-color-dark">
+
+                            <li style="margin-left: 0"><i *ngIf="lang == 2" class="fa fa-calendar"></i>
+                                {{item.Date | date: 'dd-MM-yyyy'}}<i *ngIf="lang == 1" class="fa fa-calendar"></i></li>
+
+                        </ul>
+                        <h3 class="item-title">
+                            <a>
+                                {{item.Name}} </a>
+                                <p>{{item.TypeName}}</p>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4" *ngFor="let item of artWorks" (click)="goToDet(item.ID)" [ngClass]="{
+            'pull-left' : lang === 2 || lang === 2,
+            'text-left' : lang === 2 || lang === 3
+        }">
+                <div class="card">
+                    <img src="{{item.image}}" class="img-responsive">
+                    <div>
+                        <h1>{{item.Name}}</h1>
+                        <p>{{item.TypeName}}</p>
+                        <span style="color: #aca9a9;">{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                        <span style="margin-left:4px"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+    </div>
+</div>

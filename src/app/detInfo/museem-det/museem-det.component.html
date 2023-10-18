@@ -1,0 +1,123 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row orderDisplay">
+            <div class="col-md-4 secOrder">
+                <aside class="sidebar">
+                    <div class="section-heading heading-dark">
+                        <h3 class="item-heading text-right">الفئات</h3>
+                    </div>
+                    <div class="widget">
+                        <form [formGroup]="form">
+                            <div class="widget-newsletter-subscribe-dark">
+                                <div class="form-group mb-none">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3"
+                                            *ngFor="let item of MuseumTicktesTypes ; let index = index">
+                                            <h2>{{item.Name}}</h2>
+                                            <h3 class="dark-blue mb-3"> السعر : <b>{{item.Price}}</b></h3>
+                                            <input type="number" formControlName="item{{index}}"
+                                                class="form-control font-medium">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="widget">
+                                    <div class="widget-latest text-center ok">
+                                        <a (click)="saveEvent()" class="btn btn-primary btn-lg dark-blue"><i
+                                                class="fa fa-check" aria-hidden="true"></i> حجز </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <section class="widget" style="text-align: center">
+                        <h2 class="widget-title ui-title-inner text-right">الفئات</h2>
+                        <div class="decor-right"></div>
+                        <div class="widget-content">
+                            <div *ngFor="let item of MuseumTicktesTypes" class="card">
+                                <h2>{{item.Name}}</h2>
+                                <p>{{item.Price}} : السعر</p>
+                                <button class="btn btn-primary" (click)="mins(item.Id)">-</button>
+                                <span style="margin:10px">{{item.Number}}</span>
+                                <button class="btn btn-primary" (click)="plus(item.Id)">+</button>
+                            </div>
+                        </div>
+                        <button class="booking btn btn-primary" [disabled]='!userClick' 
+                             (click)="saveEvent()">حجز</button>
+                    </section> -->
+                </aside>
+            </div>
+
+            <div class="col-md-8 firstOrder" style="text-align: right">
+                <article class="post post-full clearfix">
+
+                    <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        [src]="shareLink"></iframe>
+
+                    <ul class="entry-meta meta-color-dark">
+
+                        <li>
+                            من
+                            <span class="categoryDate color-4">{{workFrom}}</span>
+                            الى
+                            <span class="categoryDate color-4">{{WorkTo}}</span>
+                            <i class="fa fa-calendar"></i>
+                        </li>
+                    </ul>
+                    <div class="entry-main">
+                        <div class="entry-header categoriName"><span class="label bg-3"></span>
+                            <h2 class="entry-title titleOfHead"><a>{{name}}</a></h2>
+                        </div>
+                        <div class="entry-meta">
+                            <!-- من
+                            <span class="categoryDate color-4">{{workFrom}}</span>
+                            الى
+                            <span class="categoryDate color-4">{{WorkTo}}</span>
+                            <span style="margin-left:5px"><i class="fa fa-calendar"></i></span> -->
+                        </div>
+                        <hr>
+                        <div class="entry-content">
+                            <p>{{des}}</p>
+                            <h2>ايام العمل</h2>
+                            <span style="font-size:20px;" *ngFor="let item of MuseumWorksDays">,{{item.DayName}}</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- <section class="section-reply-form">
+                    <h3 class="comment-title ui-title-inner ui-title-inner_spacing_sm">اترك تعليق</h3>
+                    <div class="decor-left"></div>
+                    <form action="#" method="post" class="form-reply ui-form">
+                        <div class="row">
+                            <div class="col-md-6 forms">
+                                <input type="text" placeholder="your name" class="form-control">
+                            </div>
+                            <div class="col-md-6 forms">
+                                <input type="email" placeholder="email" class="form-control">
+                            </div>
+                            <div class="col-xs-12">
+                                <textarea rows="5" placeholder="comment" class="form-control"></textarea>
+                                <button class="ui-form__btn btn btn-xs btn-info btn-effect">ارسال</button>
+                            </div>
+                        </div>
+                    </form>
+                </section> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade text-right" id="myModalForBoking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+             <div class="modal-body">
+                    <p>asd</p>
+                </div> 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">متابعة التصفح</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="goToBooking()">ادفع</button>
+            </div>
+        </div>
+    </div>
+</div> -->

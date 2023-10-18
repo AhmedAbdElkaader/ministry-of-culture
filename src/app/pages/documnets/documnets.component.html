@@ -1,0 +1,30 @@
+<div class="form-group">
+    <div class="container">
+        <div class="row" style="margin:10px">
+            <div class="col-md-6 col-md-offset-3">
+                <form [formGroup]="Form">
+                    <button class="btn btn-primary" [disabled]="!Form.valid" (click)=go()>طلب وثيقة</button>
+                    <input formControlName="nameOfWseka" type="text" class="form-control">
+                </form>
+            </div>
+        </div>
+
+        <div class="card" *ngIf="showList">
+            <h2>الوثائق المطلوبة</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="listGroup" >
+                        <ul class="list-group list-group-flush">
+                            <li *ngFor="let item of listOfDoc" style="cursor: pointer" (click)="goToDet(item.Id)"
+                                class="list-group-item">{{item.Name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<button style="display: none" data-toggle="modal" data-target="#myModal" id="myModalaa">click</button>

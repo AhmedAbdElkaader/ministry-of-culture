@@ -1,0 +1,80 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row orderDisplay">
+            <div class="col-sm-8 col-sm-push-4" style="text-align: right">
+                <article class="post post-full clearfix">
+
+                    <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        [src]="shareLink"></iframe>
+
+                    <ul class="entry-meta meta-color-dark">
+                        <li>{{date | date: 'dd-MM-yyyy'}}<i class="fa fa-calendar"></i></li>
+                        <li>{{catg}}<i class="fa fa-tag"></i></li>
+                        <li><a href="#">{{ArticalName}}</a> الكاتب <i class="fa fa-user"></i></li>
+                    </ul>
+                    <p>{{dar}}<i class="fa fa-tag"></i></p>
+                    <h2 class="entry-title titleOfHead"><a>{{name}}</a></h2>
+                    <div class="entry-main">
+                        <div class="entry-content">
+                            <p style="color: black ; font-size: 17px" [innerHTML]="des"></p>
+                            <hr>
+                            <div class="down text-center">
+                                <a href="{{ebook}}" class="btn btn-primary btn-lg dark-blue"><i
+                                        class="fa fa-arrow-alt-circle-down"></i> تحميل </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-4 col-sm-pull-8 ">
+                    <aside class="sidebar">
+                        <section class="widget widget2" *ngIf="catLast != null">
+                            <h2 class="widget-title ui-title-inner text-right" style="margin-top: 20px">اخر الاصدارات</h2>
+    
+                            <owl-carousel [options]="SlideOption" [items]="Image"
+                                [carouselClasses]="['owl-theme', 'sliding']">
+                                <div class="item" *ngFor="let item of catLast">
+                                    <div class="" style="align-content: center ; text-align: center"
+                                        (click)="goToDet(item.Id)">
+                                        <img style="height:240px;width:100%" src={{item.Image}} />
+                                        <div style="    position: absolute;
+                                    background: white;
+                                    top: 140px;
+                                    right: 31px;
+                                    padding: 10px 10px 0 10px;
+                                    width: 300px;">
+                                            <div class="calendarr">
+                                                <span>{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                                                <span style="margin-left:5px"><i style="color: #3eafb8"
+                                                        class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <p class="titleOfParg">{{item.Name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </owl-carousel>
+                        </section>
+    
+                        <section class="widget widget2">
+                            <h2 class="widget-title ui-title-inner text-right" style="margin-top: 10px" >اصدارات اخرى</h2>
+    
+                            <div *ngFor="let item of culLast" (click)="goToDet(item.Id)"> 
+                                <img src="{{item.Image}}" alt="Foto" class="img-responsive imageAnmition"
+                                    style="width: 100%; height: 250px;">
+                                <div class="containerOfCulture">
+                                    <div class="calnderOfCulture">
+                                        <span style="color: #9e9999">{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                                        <span style="margin-left:5px ;color: #3eafb8 "><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    <p><a >{{item.Name}}</a></p>
+                                </div>
+                            </div>
+                            
+                        </section>
+                    </aside>
+                </div>
+        </div>
+    </div>
+</div>

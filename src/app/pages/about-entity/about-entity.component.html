@@ -1,0 +1,44 @@
+<div class="container" *ngIf="sublistDetails">
+    <h1 style="text-align: center ; margin:5% 0">{{nameOfEntity}}</h1>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12   no-equal-item" [ngClass]="{
+                'pull-left' : lang === 2 || lang === 2,
+                'text-left' : lang === 2 || lang === 3,
+                'pull-right' : lang === 1 ,
+                'text-right' : lang === 1
+            }" *ngFor="let item of entitArr">
+            <div class="blog-box-layout5">
+                <div class="item-img">
+                    <a><img src="{{item.Image}}" alt="Blog"></a>
+                    <a class="hover-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+                <div class="item-content ">
+                    <ul class="entry-meta meta-color-dark">
+
+                        <li style="margin-left:0">{{item.Details}}</li>
+
+                    </ul>
+                    <h3 class="item-title">
+                        <a>
+                            {{item.Title}}
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container" *ngIf="subDetails">
+    <h1 style="text-align: center ; margin:5% 0">{{nameOfEntity}}</h1>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 descrp">
+            <p>{{description}}</p>
+        </div>
+    </div>
+</div>

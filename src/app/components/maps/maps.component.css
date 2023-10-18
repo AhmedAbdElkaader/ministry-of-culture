@@ -1,0 +1,47 @@
+agm-map {
+    margin: 10px;
+    height: 500px;
+  }
+
+  .buttonStyle{
+    margin-top: 30px;
+    text-align: center
+  }
+  .buttonStyle button{
+    margin-left: 5px;
+    font-size: 18px
+  }
+  .card{
+    position: absolute;
+    top: 44%;
+    right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 250px;
+    height: 281px;
+    background: #123b4d;
+    color: white;
+    text-align: right;
+    padding: 15px;
+  }
+
+  .exit{
+    font-size: 22px;
+    color: red;
+    background: white;
+    padding: 0px 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  h2{
+    margin-top: 33px;
+  }
+  h4{
+    text-align: center
+  }

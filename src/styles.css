@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+
+ body{
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+ }  
+ owl-carousel .owl-nav .owl-prev .angleLeft{
+   font-size: 31px !important;
+    background: white;
+    border-radius: 50px;
+    padding: 13px 23px;
+    position: absolute;
+    top: 36%;
+    left: 26%;
+    color: gray;
+}
+owl-carousel .owl-nav .owl-prev .angleLeft:hover{
+   background: transparent;
+   border: 1px solid white;
+   color: white;
+}
+owl-carousel .owl-nav  .angleRight{
+   font-size: 31px !important;
+    background: white;
+    border-radius: 50px;
+    padding: 13px 23px;
+    position: absolute;
+    top: 36%;
+    right: 26%;
+    color: gray;
+}
+owl-carousel .owl-nav  .angleRight:hover{
+   background: transparent;
+   border: 1px solid white;
+   color: white;
+}
+
+.angleRightEvent{
+font-size: 25px;
+    background: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: gray;
+    position: absolute;
+    top: 38%;
+    left: 5%
+}
+.angleLeftEvent{
+   font-size: 25px;
+    background: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: gray;
+    position: absolute;
+    top: 38%;
+    right: 5%
+}
+.angleRightEvent:hover{
+   background: black;
+   color: white;
+}
+.angleLeftEvent:hover{
+   background: black;
+   color: white;
+}
+
+.angleLeftReles{
+   border-radius: 50%;
+   font-size: 30px;
+   font-weight: bold;
+   padding: 7px 17px;
+   position: absolute;
+   bottom: 34%;
+   left: 2%;
+   background: hsla(0, 0%, 100%, 0.75);
+}
+
+.angleRightReles{
+   border-radius: 50%;
+   font-size: 30px;
+   font-weight: bold;
+   padding: 7px 17px;
+   position: absolute;
+   bottom: 34%;
+   right: 2%;
+   background: hsla(0, 0%, 100%, 0.75);
+}
+
+.angleLeftReles:hover{
+   background: white;
+   color: black;
+}
+.angleRightReles:hover{
+   background: white;
+   color: black;
+}
+
+.angleLeftEntity{
+   font-size: 35px;
+   position: absolute;
+   left: 0;
+   top: 18%;
+}
+.angleRightEntity{
+   font-size: 35px;
+   position: absolute;
+   right: 0;
+   top: 18%;
+}
+.angleLeftEntity:hover{
+color: black;
+background: none
+}
+.angleRightEntity:hover{
+   color: black;
+   background: none
+   }
+

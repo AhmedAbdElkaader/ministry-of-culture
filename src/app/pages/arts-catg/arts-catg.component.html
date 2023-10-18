@@ -1,0 +1,39 @@
+<div class="mainDiv">
+    <div class="container">
+        <h1>{{categoryName}}</h1>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12 pull-right" *ngFor="let item of artsArr"
+             (click)="goToDet(item.ID)" [ngClass]="{
+                'pull-left' : lang === 2 || lang === 2,
+                'text-left' : lang === 2 || lang === 3
+            }">
+                <div class="card">
+                    <img src="{{item.image}}" class="img-responsive">
+                    <div>
+                        <h1>{{item.Name}}</h1>
+                        <p>{{item.TypeName}}</p>
+                        <span style="color: #aca9a9;">{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                        <span style="margin-left:4px"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a aria-label="Previous" (click)="gotTopPrevPage()">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li (click)="gotToPage()"><a>{{current}}</a></li>
+                    <li>
+                        <a aria-label="Next" (click)="gotToNextPage()">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

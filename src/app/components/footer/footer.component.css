@@ -1,0 +1,10 @@
+@import "../../../styleMain.css";
+
+h3 , p{
+  color: white !important;
+  text-align: right
+}
+
+.footer-box-layout2 .footer-social li:after {
+  content:none !important;
+}

@@ -1,0 +1,16 @@
+
+
+<div id="sc-password">
+    <h1>تغيير كلمة المرور</h1>
+    <form [formGroup]="changeForm" (ngSubmit)="changePass()">
+        <div class="sc-container">
+        <input formControlName="OldPassword" class="text-right" type="password" placeholder="كلمة المرور الحالية"  required/>
+
+        <input formControlName="NewPassword" class="text-right" type="password" placeholder="كلمة المرور الجديدة" required minlength="6" />
+
+        <input formControlName="ConfirmPassword" class="text-right" type="password" placeholder="تأكيد كلمة المرور" required />
+
+        <button type="submit">حفظ</button>
+        </div>
+    </form>
+  </div>

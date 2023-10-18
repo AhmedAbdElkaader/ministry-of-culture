@@ -1,0 +1,19 @@
+
+<section class="slider-wrap-layout7" style="margin-top: 10%">
+  <div class="container">
+    <h2 class="item-heading text-center mb-3">{{header}}</h2>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+              <owl-carousel [options]="SlideOptions" [items]="Images" [carouselClasses]="['owl-theme', 'sliding']">
+                <div class="item" *ngFor="let img of Images">
+                  <div style="align-content: center; margin: 0 35px">
+                    <img style="height: 100px; z-index: 1000;" src={{img}} />
+                  </div>
+                </div>
+              </owl-carousel>
+      </div>
+    </div>
+   
+
+  </div>
+</section>

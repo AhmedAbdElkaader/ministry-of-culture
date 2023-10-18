@@ -1,0 +1,75 @@
+<div class="mainDiv">
+    <div class="container">
+        <div class="row formStyle">
+            <div class="col-md-12 inputControl">
+                <input [formControl]="queryField" placeholder="ابحث عن الترخيص" [(ngModel)]="name" name="name"
+                    type="text" class="form-control inputSearch">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12  no-equal-item" (click)="goToDet(item.Id)" [ngClass]="{
+                    'pull-left' : lang === 2 || lang === 2,
+                   'text-left' : lang === 2 || lang === 3,
+                      'pull-right' : lang === 1 ,
+                    'text-right' : lang === 1
+                  }"
+                *ngFor="let item of licenseArr">
+                <div class="blog-box-layout5" style="height: 360px">
+                    <div class="item-img">
+                        <a><img src="{{item.Image}}" alt="Blog"></a>
+                        <a class="hover-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="item-content ">
+
+                        <h3 class="item-title">
+                            <a>
+                                {{item.Name}}
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div style="cursor: pointer ;" class="col-md-4 col-sm-6 col-xs-12 pull-right" *ngFor="let item of licenseArr"
+                (click)="goToDet(item.Id)" [ngClass]="{
+                    'pull-left' : lang === 2 || lang === 2,
+                    'text-left' : lang === 2 || lang === 3
+                }">
+                <div class="card">
+                    <img src="https://via.placeholder.com/250" class="img-responsive">
+                    <div>
+                        <h3>{{item.Name}}</h3>
+                     
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div style="text-align: center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a aria-label="Previous" (click)="gotTopPrevPage()">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li (click)="gotToPage()"><a>{{current}}</a></li>
+                    <li>
+                        <a aria-label="Next" (click)="gotToNextPage()">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div> -->
+    </div>
+</div>
+
+
+
+<button style="display: none" data-toggle="modal" data-target="#myModal" id="myModalaa">click</button>

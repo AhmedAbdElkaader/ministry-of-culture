@@ -1,0 +1,56 @@
+<!-- <div class="page" *ngIf="responsNotEmpthy">
+    <div class="wrap-title-bg">
+        <h2 class="ui-title-bg">{{header}}</h2>
+    </div>
+    <div class="all">
+        <section class="books">
+            <div class="container">
+                <div class="row mainRow">
+                    <div style="text-align: center" (click)="gottoDet(book.ID)" 
+                     class="col-md-5 col-md-offset-1 col-sm-4 col-xs-12 images"
+                        *ngFor="let book of booksArr ;">
+                        <h3 class="pargTitle wow fadeInDown" data-wow-delay="0.25s">{{book.Name}}</h3>
+                        <img src="{{book.image}}" class="image-responsive wow fadeInLeft" data-wow-delay="0.25s">
+                        <div style="height: 150px">
+                            <p class="wow fadeInRight" data-wow-delay="0.25s">
+                                {{book.Description}}
+                            </p>
+                            <button class="btn btn-primary btnDowenload"><a target="_blank"
+                                    href="{{book.FilePath}}">{{dowenLoadState}}</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="bookCover"></div>
+    </div>
+</div> -->
+<div *ngIf="responsNotEmpthy">
+
+<h2 class="item-heading text-center mb-5" style="margin-top: 5%">{{header}}</h2>
+<owl-carousel [options]="SlideOptions" [items]="Images" [carouselClasses]="['owl-theme', 'sliding']">
+    <div class="item" *ngFor="let img of booksArr ; let index = index">
+        <div style="align-content: center">
+           <div  class="row " style="margin: 0 1px" [ngClass]="{
+            'bookRow1' : index === 0,
+            'bookRow2' : index === 1,
+            'bookRow3' : index === 2,
+            'bookRow4' : index === 3
+        }">
+               <div class="col-md-5 col-md-offset-1">
+                <img class="imageBook" src={{img.image}} />
+               </div>
+               <div class="col-md-6" style="height: 225px">
+                   <div style="margin-right:10px">
+                        <p class="pBook">{{img.Name}}</p>
+                   </div>
+                   <div class="dowenloadDive">
+                        <a target="_blank" href="{{img.FilePath}}" class="book-DowenLoad">{{dowenLoadState}}</a>
+                        </div>
+               </div>
+           </div> 
+        </div>
+    </div>
+</owl-carousel>
+
+</div>

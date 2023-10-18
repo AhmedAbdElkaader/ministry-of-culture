@@ -1,0 +1,67 @@
+<!-- start setting -->
+<section class="setting">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-4">
+                    <ul class="list-group help-group">
+                        <div class="faq-list list-group nav nav-tabs" id="con">
+                            <a href="#tab0" [ngClass]="{'activee':idOfTap == 0,
+                'notActive':idOfTap != 0}" (click)="updateActive(0)" class="list-group-item activee" role="tab"
+                                data-toggle="tab" >تقديم الحجز</a>
+                            <a href="#tab1" [ngClass]="{'activee':idOfTap == 1,
+                'notActive':idOfTap != 1}" (click)="updateActive(1)" [class.disabled]="userIfApplyOld.Cost == 0"
+                                class="list-group-item tabOne" role="tab" data-toggle="tab"> التحقق من حالة الطلب</a>
+                        </div>
+                    </ul>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content panels-faq">
+                        <div class="tab-pane active" id="tab0" >
+                            <div class="panel-group" id="">
+                                <div class="panel panel-default panel-help">
+                                    <div class="setting-sec setting-secx">
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="panel-body" style="text-align:right;
+                                        padding-right:20px; 
+                                         font-size: 20px">
+                                            <div>
+                                                <p>{{HoursNo}} : عدد
+                                                    الساعات</p>
+                                                <p>{{Cost}} :
+                                                    التكلفة</p>
+                                                <p>{{EndDate | date: 'dd-MM-yyyy'}}
+                                                    : نهاية الدورة</p>
+                                                <p>{{StartDate | date: 'dd-MM-yyyy'}}
+                                                    : بداية الدورة</p>
+
+                                                <button class="btn btn-primary"
+                                                style="font-size: 20px ; margin-top: 10px ; margin-bottom: 10px"
+                                                 (click)="save()" [disabled]="userIfApplyOld.Cost == 100 || userIfApplyOld.Acceppted == true">احجز</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab1" *ngIf="userIfApplyOld.Cost != 0">
+                            <div class="panel-group" id="">
+                                <div class="panel panel-default panel-help">
+                                    <div class="setting-sec setting-secx">
+                                    </div>
+                                    <div class="panel-body" style="text-align: center">
+                                        <h1 *ngIf="userIfApplyOld.Cost == 100 && userIfApplyOld.Acceppted == false" style="text-align: center">جاري مراجعة طلبك</h1>
+                                        <h1 *ngIf="userIfApplyOld.Acceppted == true" style="text-align: center">تم الموافقة علي طلبك وبرجاء سداد الرسوم</h1>
+                                        <button class="btn btn-primary" (click)="goToCehck()" *ngIf="userIfApplyOld.Acceppted == true">تابع عملية الدفع</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end setting -->

@@ -1,0 +1,60 @@
+@import "../../../styleMain.css";
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-top:20px;
+    border-radius: 20px;
+    padding-right:16px;
+    padding-left: 0; 
+  }
+
+  .calendarr{
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .containerOfCulture{
+    margin-top:15px;
+  }
+  
+  .containerOfCulture p{
+  margin-top: 10px !important; 
+  font-size: 18px;
+  }
+  .containerOfCulture p  a{
+    text-decoration: none !important;
+    color: black !important;
+  }
+
+  .imageAnmition{
+  transition: transform 2s;
+}
+.imageAnmition:hover{
+  transform: rotate(5deg);
+}
+  .card img {
+    width: 200px;
+    height: 200px;
+  }
+  .widget-content{
+    margin-top: 24px;
+  }
+  .tags{
+    margin-left:5px;
+    color: white;
+    background: #04222d
+  }
+  .categoriName{
+    margin-top: -12px
+  }
+  .categoriName span {
+    font-size:17px
+  }
+  .titleOfHead a{
+  
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  

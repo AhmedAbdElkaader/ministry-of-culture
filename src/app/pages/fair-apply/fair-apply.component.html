@@ -1,0 +1,107 @@
+<!-- start setting -->
+<section class="setting">
+  <div class="container">
+    <div class="row">
+      <div class="container">
+        <div class="col-md-4">
+          <ul class="list-group help-group">
+            <div class="faq-list list-group nav nav-tabs" id="con">
+              <a href="#tab0" [ngClass]="{'activee':idOfTap == 0,
+              'notActive':idOfTap != 0}" (click)="updateActive(0)" class="list-group-item activee" role="tab"
+                data-toggle="tab">تقديم طلب</a>
+              <a href="#tab1" [ngClass]="{'activee':idOfTap == 1,
+              'notActive':idOfTap != 1}" (click)="updateActive(1)" class="list-group-item tabOne" role="tab"
+                data-toggle="tab"> التحقق من حالة الطلب</a>
+            </div>
+          </ul>
+        </div>
+        <div class="col-md-8">
+          <div class="tab-content panels-faq">
+            <div class="tab-pane active" id="tab0">
+              <div class="panel-group" id="">
+                <div class="panel panel-default panel-help">
+                  <div class="setting-sec setting-secx">
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-body">
+                      <div style="text-align:right">
+                        <form [formGroup]="form">
+                          <div class="from-group" *ngFor='let item of inputsArray' style="padding:0 10px">
+                            <label
+                              [class.invalid]="item.Name != null && form.get(item.Name).invalid && form.get(item.Name).touched">:
+                              {{item.Name}} <span *ngIf="item.isMandotry == true">*</span></label>
+                            <div *ngIf="item.Name == 'أنواع الاشتراكات'">
+                              <select [formControlName]="item.Name" style="width: 150px;height: 30px;">
+                                <option value="{{items.Name}}" *ngFor='let items of item.subscriptionTypes'>
+                                  {{items.Name}}</option>
+                              </select>
+                            </div>
+                            <input *ngIf="item.DataType != 'DDL' && item.Name != 'أنواع الاشتراكات'"
+                              [class.is-invalid]="item.Name != null && form.get(item.Name).invalid && form.get(item.Name).touched"
+                              class="form-control" [formControlName]="item.Name" type="{{item.DataType}}">
+                          </div>
+                          <button class="btn btn_primary pay btnSave" [disabled]="!form.valid" (click)="getForm()">تقديم
+                            الاستمارة</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab1">
+              <div class="panel-group" id="">
+                <div class="panel panel-default panel-help">
+                  <div class="setting-sec setting-secx">
+
+                  </div>
+                  <div class="panel-body">
+                    <h1 style="text-align: center" *ngIf="showErorrMasg == true">لا توجد طلبات سابقة</h1>
+                    <div class="card" (click)="getCompDetails(item.Id)" *ngFor="let item of oldStauts">
+                      <p>{{item.changeTime | date: 'dd-MM-yyyy'}} : تاريخ الظلب </p>
+                      <p *ngIf="item.isAccepted == true">حالة الظلب : موافقة</p>
+                      <p *ngIf="item.isAccepted == false">حالة الظلب : مراجعة</p>
+                      <p *ngIf="item.isPaid == false">مدفوع : لا</p>
+                      <p *ngIf="item.isPaid == true">مدفوع : نعم</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comptResultDeatils" *ngIf="showDetails">
+    <form>
+      <div class="form-group">
+        <label>اسم </label>
+        <input class="form-control " type="text" disabled value="{{fairResp[6].value}}">
+      </div>
+      <div class="form-group">
+        <label>تاريخ الطلب</label>
+        <input class="form-control " type="text" disabled value="{{fairDate | date: 'dd-MM-yyyy'}}">
+      </div>
+
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input class="form-control " type="text" disabled value="{{fairResp[7].value}}">
+      </div>
+      <div class="form-group">
+        <label>رقم المحمول</label>
+        <input class="form-control " type="text" disabled value="0{{fairResp[8].value}}">
+      </div>
+      <div class="form-group">
+          <label>حالة الطلب</label>
+          <input class="form-control " type="text" disabled value="{{fairStauts}}">
+        </div>
+        <div class="form-group">
+          <label>مدفوع</label>
+          <input class="form-control " type="text" disabled value="{{fairPaid}}">
+        </div>
+    </form>
+  </div>
+</section>
+<!-- end setting -->

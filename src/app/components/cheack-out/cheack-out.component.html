@@ -1,0 +1,115 @@
+<div class="container" *ngIf="!arrayOfTicketsEmt">
+    <div class="card" *ngFor="let item of arrOFtikets; let i = index">
+
+        <div *ngIf="item.id && item.Number != 0">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{item.srcOfImage}}" style="width: 100%; height:200px;">
+                </div>
+                <div class="col-md-8">
+                        <h1> اسم الحفلة : {{item.NameOfEvent}}</h1>
+                        <p> الفئة : {{item.Name}}</p>
+                        <p>{{item.Price * item.Number}} : سعر التداكر</p>
+                        <p>{{item.Number}} : عدد التداكر</p>
+                        <p><button style="margin-right: 5px" (click)="CountMuins(item.id)"
+                            class="btn btn-primary">-</button>
+                        {{item.Number}}
+                        <button style="margin-left: 5px" (click)="CountPlus(item.id)" class="btn btn-primary">+</button>
+                        :
+                        العدد </p>
+                </div>
+            </div>
+            <button (click)="deletItem(item.id,i)" class="btn btn-danger">حذف</button>
+        </div>
+
+
+        <div *ngIf="item.Id">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{item.srcOfImage}}" style="width: 100%; height:200px;">
+                </div>
+                <div class="col-md-8">
+                    <h1> اسم المتحف : {{item.NameOfEvent}}</h1>
+                    <p> الفئة : {{item.Name}}</p>
+                    <p>{{item.Price * item.Number}} : سعر التدكرة</p>
+                    <p><button style="margin-right: 5px" (click)="CountMuins(item.Id)"
+                            class="btn btn-primary">-</button>
+                        {{item.Number}}
+                        <button style="margin-left: 5px" (click)="CountPlus(item.Id)" class="btn btn-primary">+</button>
+                        :
+                        العدد </p>
+                </div>
+            </div>
+            <button (click)="deletItem(item.Id,i)" class="btn btn-danger">حذف</button>
+        </div>
+        <div *ngIf="item.ID">
+            <p> اسم الدورة : {{item.Name}}</p>
+            <p>{{item.Cost}} : السعر </p>
+            <button (click)="deletItem(item.ID,i)" class="btn btn-danger">حذف</button>
+        </div>
+    </div>
+
+    <div style="text-align: right;" >
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModalForBOOK"
+            id="myModalaa" style="margin-bottom: 20px; margin-top: 10px">تابع عملية الدفع</button>
+    </div>
+</div>
+
+<div class="modal fade text-right" id="myModalForBOOK" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form [formGroup]="formBook">
+                    <input type="text" placeholder="Full Name" formControlName="name" class="form-control"><br />
+                    <input type="email" placeholder="Email" formControlName="email" class="form-control"><br />
+                    <input type="number" placeholder="Phone Number" formControlName="phone_number"
+                        class="form-control"><br />
+                    <div *ngIf="showInputsForCash == 'Cash'">
+                        <input type="text" placeholder="country" formControlName="country" class="form-control"><br />
+                        <input type="text" placeholder="state" formControlName="state" class="form-control"><br />
+                        <input type="text" placeholder="city" formControlName="city" class="form-control"><br />
+                        <input type="text" placeholder="street" formControlName="street" class="form-control"><br />
+                        <input type="text" placeholder="building" formControlName="building" class="form-control"><br />
+                        <input type="text" placeholder="apartment" formControlName="apartment"
+                            class="form-control"><br />
+                        <input type="text" placeholder="floor" formControlName="floor" class="form-control"><br />
+                    </div>
+
+                    <input type="number" value="{{total}}" disabled class="form-control"><br />
+
+                    <h4>اختر عملية الدفع</h4>
+                    <hr>
+                    <div class="form-group">
+                        <label style="margin-right: 5px" for="male">الكروت الالكترونية</label>
+                        <input id="Card" (change)="selctedCash($event.target.value)" type="radio" value="Card"
+                            formControlName="paymentUse">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 5px" for="male">امان</label>
+                        <input id="Kiosk" (change)="selctedCash($event.target.value)" type="radio" value="kiosk"
+                            formControlName="paymentUse">
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right: 5px" for="male">الدفع النقدي</label>
+                        <input id="Cash" (change)="selctedCash($event.target.value)" type="radio" value="Cash"
+                            formControlName="paymentUse">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">إلفاء</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!formBook.valid"
+                    (click)="sendFess()">ارسال</button>
+            </div>
+        </div>
+    </div>
+    <!-- //[disabled]="!formBook.valid" -->
+</div>
+
+<div class="main" *ngIf="arrayOfTicketsEmt">
+    <div class="masg">
+        <h1>عفوا لا توجد اي حجوزات</h1>
+    </div>
+</div>

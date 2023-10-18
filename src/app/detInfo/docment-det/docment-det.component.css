@@ -1,0 +1,211 @@
+/*GLOBAL RULES*/
+
+hr{
+    margin: 0
+}
+
+.ax-it{
+    color: #fff;
+    font-weight: normal
+}	
+.uppercase{
+    text-transform: uppercase;
+}
+.h-border:after{
+    content: '';
+    width: 70px;
+    height: 2px;
+    background: #a836bc;
+    display: block;
+    margin: 30px 0 
+}
+.h-border-center:after{
+    content: '';
+    width: 70px;
+    height: 2px;
+    background: #a836bc;
+    display: block;
+    margin: 30px auto 
+}
+
+h2,h3,h4,h5,h6{
+    /*text-transform: capitalize;*/
+}
+.list-unstyled{
+    padding-right: 0
+}
+a{
+    color: #a836bc;
+}
+a:hover, a:focus{
+    text-decoration: none;
+}
+select:required:invalid {
+color: gray;
+}
+option[value=""][disabled] {
+display: none;
+}
+.form-control:focus {
+    border-color: #a836bc;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px (168, 54, 188, 0.5);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(168, 54, 188, 0.5);
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+    outline: 0
+}
+
+
+/*SETTING PAGE*/
+.col-md-4{
+  float: right;
+}
+h1,h2,h3,h4,h5,h6,span,p,a,label {
+  text-align: right;
+}
+
+.setting {
+  padding: 60px 0; 
+    background-color: #f7f7f7;
+}
+.setting .setting-sec{
+  padding: 40px;
+  border-top: 1px solid #ddd;
+}
+.setting .setting-sec.setting-secx{
+  padding: 20px 40px;
+  border-top: 0
+}
+.setting .setting-sec .btn{
+  margin-top: 0px;
+  float: right;
+  display: inline-block;
+  width: 185px;
+  
+}
+.setting .setting-sec .btn-default{
+  background: #a3a3a3;
+  color: #fff;
+  width: 100px;
+  margin-left: 6px
+}
+.setting .setting-sec .facebook-btn{
+  background:  #344e86
+}
+.setting .list-group.help-group {
+margin-bottom: 20px;
+padding-left: 0;
+margin: 0;
+background: #fff;
+box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+}
+.setting .list-group.help-group .faq-list {
+display: block;
+top: auto;
+margin: 0 0 32px;
+border: 0
+}
+.setting .list-group.help-group .faq-list .list-group-item {
+position: relative;
+display: block;
+/*margin: 10px 0;*/
+padding: 18px 16px;
+border: 0;
+color: #04222d;
+transition: background-color 0.2s;
+background: transparent;
+}
+.setting .list-group.help-group .faq-list .list-group-item i.mdi {
+margin-right: 5px;
+font-size: 18px;
+position: relative;
+top: 2px;
+}
+.setting .list-group.help-group .faq-list .list-group-item:hover {
+background-color: #f6f6f6;
+border-radius: 0
+}
+/* .setting .list-group.help-group .faq-list .list-group-item.active {
+  background-color: #04222d;
+  border-radius: 0px;
+  font-weight: 700;
+  color: #fff;
+} */
+.activee{
+background-color: #04222d !important;
+  border-radius: 0px;
+  font-weight: 700;
+  color: #fff !important;
+}
+
+.setting .tab-content.panels-faq {
+padding: 0;
+border: 0;
+}
+.setting .panel.panel-help {
+box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+padding-bottom: 0;
+border-radius: 2px;
+overflow: hidden;
+background-color: #fff;
+margin: 0 0 16px;
+/*padding: 40px*/
+}
+.setting .panel.panel-help a[href^="#"],
+.setting .panel.panel-help a[href^="#"]:hover,
+.setting .panel.panel-help a[href^="#"]:focus {
+outline: none;
+cursor: pointer;
+text-decoration: none;
+}
+.setting .panel.panel-help .panel-heading {
+color: rgba(0, 0, 0, 0.87);
+padding: 20px 40px;
+background: #fff 
+}
+.setting .panel.panel-help .panel-body {
+background-color: #fff;
+border-radius: 2px;
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+margin-top: 0;
+padding: 0
+}
+.setting .panel.panel-help .panel-body p {
+margin: 0 0 16px;
+}
+.setting .panel.panel-help .panel-body p:last-of-type {
+margin: 0;
+}
+.setting .input-group-addon {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.setting .btn{
+  margin: 0px auto 20px;
+  border-radius: 25px;
+  color: #fff;
+  background: #04222d;
+  margin: auto;
+  width: 150px;
+  display: block;
+  line-height: 20px;
+  height: 40px;
+}
+
+/*freelancersetting*/
+.setting .list-group.help-group {
+  padding-right: 0;
+}
+.setting .setting-sec .btn{
+  float: left;
+}
+
+#tabOneStyle{
+    border: 1px solid black
+}
+
+#tabOneStyle h1{
+    text-align: center;
+}

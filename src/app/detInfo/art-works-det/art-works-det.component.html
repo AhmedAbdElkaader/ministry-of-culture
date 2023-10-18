@@ -1,0 +1,92 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row orderDisplay">
+            <div class="col-md-4 secOrder">
+                <aside class="sidebar">
+                    <section class="widget widget2">
+                        <h2 class="widget-title ui-title-inner text-right">اخر الأعمال الفنية </h2>
+                        <owl-carousel [options]="SlideOption" [items]="Image"
+                            [carouselClasses]="['owl-theme', 'sliding']">
+                            <div class="item" *ngFor="let item of CultureLatestArtworks">
+                                <div class="" style="align-content: center ; text-align: center"
+                                    (click)="goToDet(item.Id)">
+                                    <img style="height:240px;width:100%" src={{item.Image}} />
+                                    <div style="    position: absolute;
+                                    background: white;
+                                    top: 170px;
+                                    right: 31px;
+                                    padding: 10px 10px 0 10px;
+                                    width: 300px;">
+                                        <div class="calendarr">
+                                            <span>{{item.from | date: 'dd-MM-yyyy'}}</span>
+                                            <span style="margin-left:5px"><i style="color: #3eafb8"
+                                                    class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <p class="titleOfParg">{{item.Name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </owl-carousel>
+                    </section>
+                </aside>
+            </div>
+
+            <div class="col-md-8 firstOrder" style="text-align: right">
+                <article class="post post-full clearfix">
+
+                    <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        [src]="shareLink"></iframe>
+
+                    <ul class="entry-meta meta-color-dark">
+                        <li>{{catgeori}}<i class="fa fa-tag"></i></li>
+                         <li> الي :
+                            {{dateTo | date: 'dd-MM-yyyy'}}<i class="fa fa-calendar"></i></li>
+                        <li> من :
+                            {{dataForm | date: 'dd-MM-yyyy'}}
+                            <i class="fa fa-calendar"></i></li>
+                       
+                    </ul>
+
+                    <div class="entry-main">
+                        <div class="entry-header categoriName">
+                            <h2 class="entry-title titleOfHead"><a>{{name}}</a></h2>
+                        </div>
+                        <div class="entry-meta">
+                        
+                         
+                        </div>
+                        <div class="entry-content">
+                            <p>{{desc}}</p>
+
+                            <h3 class="ui-title-inner">معرض الصور</h3>
+
+                            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
+                           
+
+                        </div>
+                    </div>
+                </article>
+                <!-- <section class="section-reply-form" style="margin-bottom: 10px;">
+                    <h3 class="comment-title ui-title-inner ui-title-inner_spacing_sm">اترك تعليق</h3>
+                    <div class="decor-left"></div>
+                    <form action="#" method="post" class="form-reply ui-form">
+                        <div class="row">
+                            <div class="col-md-6 forms">
+                                <input type="text" placeholder="your name" class="form-control">
+                            </div>
+                            <div class="col-md-6 forms">
+                                <input type="email" placeholder="email" class="form-control">
+                            </div>
+                            <div class="col-xs-12">
+                                <textarea rows="5" placeholder="comment" class="form-control"></textarea>
+                                <button class="ui-form__btn btn btn-xs btn-info btn-effect">ارسال</button>
+                            </div>
+                        </div>
+                    </form>
+                </section> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row flexPro">
+            <div class="col-md-4 secOrder">
+                <aside class="sidebar">
+                    <section class="widget">
+                        <h2 class="widget-title ui-title-inner text-right">تابعنا</h2>
+                        <div class="decor-right"></div>
+                            <div class="decor-right"></div>
+                            <div class="row socialOnly">
+                              <div class="col offset-2">
+                                  <a class="faceBook" target="_blank" href="https://www.facebook.com/Culture-Gate-103834857931056/?__tn__=%2Cd%2CP-R&eid=ARCqmJ0rfdS5oaPqLjtfFvrs8qCzM53J-MI_hROHKC54CPe-Qlvm6fAhL_vbUtnvnqWXNDt4YgTpxezm"><i class="fa fa-facebook-square"></i> </a>
+                              </div>
+                              <div class="col">
+                                  <a class="youtube" target="_blank" href="https://www.youtube.com/channel/UCGw9Yn-_j6CpysvnhVUeT4w/about"><i class="fa fa-youtube-square"></i></a>
+                              </div>
+                            </div>
+                      </section>
+
+                    <section class="widget">
+                        <div class="widget-content" style="text-align: right">
+                            <ul class="list list-mark-1 list-mark-1_mod-a">
+                                <li *ngFor="let item of categori"><a href="category.html">{{item}}</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+            <div class="col-md-8 firstOrder" style="text-align: right">
+                <article class="post post-full clearfix">
+                    <div class="entry-media"><img src="https://via.placeholder.com/250" class="img-responsive mainPhoto"></div>
+                    <div class="entry-main">
+                        <div class="entry-header categoriName"><span class="label bg-3">{{Name}}</span>
+                            <h2 class="entry-title titleOfHead"><a>مكان الدورة : {{Place}}</a></h2>
+                        </div>
+                        <div class="entry-meta">
+                            <div class="row">
+                                <span class="spa col-md-6 col-lg-6 col-sm-6 col-xs-12">{{HoursNo}} : عدد الساعات</span>
+                                <span class="spa col-md-6 col-lg-6 col-sm-6 col-xs-12">{{Cost}} : التكلفة</span>
+                                <span class="spa col-md-6 col-lg-6 col-sm-6 col-xs-12">{{EndDate | date: 'dd-MM-yyyy'}} : نهاية الدورة</span><br>
+                                <span class="spa col-md-6 col-lg-6 col-sm-6 col-xs-12">{{StartDate | date: 'dd-MM-yyyy'}} : بداية الدورة</span><br>
+                                <button class="btn btn-primary" id="myModala" data-toggle="modal" data-target="#myModalWhenBookin"
+                                >احجز</button>
+                            </div>  
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade homepage-popup" id="myModalWhenBookin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align: right">
+                برجاء ارفاق مستند الحصول علي الدورة السابقة
+            </div>
+            <div class="modal-body">
+                <input type="file" (change)="handleFileSelect($event)" class="form-control">
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class=" btn btn-primary" data-dismiss="modal" aria-label="Close"
+                    (click)="save()"
+                        aria-hidden="true">ارسال</button>
+            </div>
+        </div>
+    </div>
+</div>

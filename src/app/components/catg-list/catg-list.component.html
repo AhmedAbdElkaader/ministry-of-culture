@@ -1,0 +1,38 @@
+<div class="mainDiv">
+        <div class="container">
+            <div class="title">
+                <h4>اخبار</h4>
+                <h2>ثقافية</h2>
+            </div>
+            <div class="row">
+                <div style="cursor: pointer ;" class="col-md-4" *ngFor="let item of newsArr" (click)="goToDet(item.Id)">
+                    <div class="card">
+                        <img src="{{item.ImagePath}}" class="img-responsive">
+                        <div>
+                            <h3>{{item.Title}}</h3>
+                            <p>{{item.Details}}</p>
+                            <span style="color: #aca9a9;">{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                            <span><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a aria-label="Previous" (click)="gotTopPrevPage()">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li (click)="gotToPage()"><a>{{current}}</a></li>
+                        <li>
+                            <a aria-label="Next" (click)="gotToNextPage()">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>

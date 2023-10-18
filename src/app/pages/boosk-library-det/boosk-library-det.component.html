@@ -1,0 +1,45 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row orderDisplay">
+            <div class="col-md-4 secOrder">
+                <aside class="sidebar">
+                    <section class="widget">
+                        <h2 class="widget-title ui-title-inner text-right">تابعنا</h2>
+                        <div class="decor-right"></div>
+                        <div class="row socialOnly">
+                            <div class="col-md-5 col-md-offset-2">
+                                <a class="faceBook" target="_blank"
+                                    href="https://www.facebook.com/Culture-Gate-103834857931056/?__tn__=%2Cd%2CP-R&eid=ARCqmJ0rfdS5oaPqLjtfFvrs8qCzM53J-MI_hROHKC54CPe-Qlvm6fAhL_vbUtnvnqWXNDt4YgTpxezm"><i
+                                        class="fa fa-facebook-square"></i> </a>
+                            </div>
+                            <div class="col-md-5">
+                                <a class="youtube" target="_blank"
+                                    href="https://www.youtube.com/channel/UCGw9Yn-_j6CpysvnhVUeT4w/about"><i
+                                        class="fa fa-youtube-square"></i></a>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+
+            <div class="col-md-8 firstOrder" style="text-align: right">
+                <article class="post post-full clearfix">
+                    <div class="entry-media"><img src="{{bookImage}}" class="img-responsive conImg"></div>
+                    <div class="entry-main">
+                        <div class="entry-header categoriName"><span class="label bg-3">
+                                <!--CATEGORY--></span>
+                            <h2 class="entry-title titleOfHead"><a>{{bookName}}</a></h2>
+                        </div>
+                        <div class="entry-content">
+                            <p [innerHTML]="details"></p>
+                            <div *ngFor="let item of entits">
+                                <button style="margin-bottom: 10px;" class=" btn tags ">{{item.Name}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+         
+            </div>
+        </div>
+    </div>
+</div>

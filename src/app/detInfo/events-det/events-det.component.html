@@ -1,0 +1,151 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row orderDisplay">
+            <div class="col-md-4 secOrder">
+                <aside class="sidebar">
+                    <section class="widget widget2">
+                        <h2 class="widget-title ui-title-inner text-right">{{lastE}}</h2>
+
+                        <owl-carousel [options]="SlideOption" [items]="Image"
+                            [carouselClasses]="['owl-theme', 'sliding']">
+                            <div class="item" *ngFor="let item of cultureEvents">
+                                <div class="" style="align-content: center ; text-align: center"
+                                    (click)="goToDet(item.Id)">
+                                    <img style="height:240px;width:100%" src={{item.Image}} />
+                                    <div style="    position: absolute;
+                                    background: white;
+                                    top: 140px;
+                                    right: 31px;
+                                    padding: 10px 10px 0 10px;
+                                    width: 300px;">
+                                        <div class="calendarr">
+                                            <span>{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                            <span style="margin-left:5px"><i style="color: #3eafb8"
+                                                    class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <p class="titleOfParg">{{item.Name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </owl-carousel>
+
+                    </section>
+                    <section class="widget widget2">
+                        <h2 class="widget-title ui-title-inner text-right">احداث متعلقة</h2>
+
+                        <div *ngFor="let item of lastEvents" (click)="goToDet(item.Id)">
+                            <img src="{{item.Image}}" alt="Foto" class="img-responsive imageAnmition"
+                                style="width: 100%; height: 250px;">
+                            <div class="containerOfCulture">
+                                <div class="calnderOfCulture">
+                                    <span style="color: #9e9999">{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                    <span style="margin-left:5px ;color: #3eafb8 "><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <p><a>{{item.Name}}</a></p>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+
+            <div class="col-md-8 firstOrder" style="text-align: right">
+                <article class="post post-full clearfix">
+
+                    <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        [src]="shareLink"></iframe>
+
+                    <ul class="entry-meta meta-color-dark">
+                        <li>{{location}}<i class="fa fa-tag"></i></li>
+                        <li> الي :
+                            {{endDate | date: 'dd-MM-yyyy'}}<i class="fa fa-calendar"></i></li>
+                        <li> من :
+                            {{startDate | date: 'dd-MM-yyyy'}}
+                            <i class="fa fa-calendar"></i></li>
+
+                    </ul>
+                    <div class="entry-main">
+                        <div class="entry-header categoriName"><span class="label bg-3">
+                                <!--CATEGORY--></span>
+                            <h2 class="entry-title titleOfHead"><a>{{name}}</a></h2>
+                        </div>
+
+                        <div class="entry-content">
+                            <div [innerHTML]="descrption"></div>
+                            <div>
+                                <button class="btn tags btn-primary">{{Tag_Name}}</button>
+                            </div>
+
+                            <div *ngIf="showEntityLatestEvents">
+                                <h3 class="ui-title-inner"> احداث الجهات </h3>
+                                <owl-carousel [options]="SlideOptions" [items]="Images"
+                                    [carouselClasses]="['owl-theme', 'sliding']">
+                                    <div class="item" *ngFor="let item of entityLatestEvents">
+                                        <div class="card" style="align-content: center ">
+                                            <img style="height:230px;width:100%; margin-bottom: 10px"
+                                                src={{item.Image}} />
+                                            <div class="calendarr">
+                                                <span>{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                                <span style="margin-left:5px"><i style="color: #3eafb8"
+                                                        class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <p class="titleOfParg">{{item.Name}}</p>
+                                        </div>
+                                    </div>
+                                </owl-carousel>
+
+                            </div>
+
+                            <section *ngIf="showAlbum">
+                                <h3 class=" ui-title-inner ui-title-inner_spacing_sm ">معرض الصور</h3>
+                                <hr>
+                                <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                            </section>
+                            <!-- <div *ngIf="showAlbum">
+                                <h3 class="ui-title-inner">معرض الصور</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let item of imageAlbum">
+                                        <img src="{{item.image}}" alt="foto" style="margin: 5px;"
+                                            class="img-responsive">
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div *ngIf="showVideo">
+                                <h3 class="ui-title-inner">معرض الفيديو</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6" id="iframLink">
+                                        <iframe width="750" class="e2e-iframe-trusted-src" height="320"
+                                            [src]="videoUrl"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 
+                <section class="section-reply-form">
+                    <h3 class="comment-title ui-title-inner ui-title-inner_spacing_sm">{{comm}}</h3>
+                    <div class="decor-left"></div>
+                    <form action="#" method="post" class="form-reply ui-form">
+                        <div class="row">
+                            <div class="col-md-6 forms">
+                                <input type="text" placeholder="your name" class="form-control">
+                            </div>
+                            <div class="col-md-6 forms">
+                                <input type="email" placeholder="email" class="form-control">
+                            </div>
+                            <div class="col-xs-12">
+                                <textarea rows="5" placeholder="comment" class="form-control"></textarea>
+                                <button class="ui-form__btn btn btn-xs btn-info btn-effect">{{send}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </section> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <aside class="sidebar">
+                    <div class="widget-latest text-center ok">
+                        <a (click)="goToDet(id)" class="btn btn-primary btn-lg dark-blue"><i class="fa fa-check"></i>
+                            التحاق </a>
+                    </div>
+
+                    <h2 style="margin-top: 5%" class="widget-title ui-title-inner text-right">الاشتراكات</h2>
+                    <div class="panel-group" id="accordion" style="text-align: right">
+                        <div class="panel panel-default" *ngFor="let item of Subscriptions ; let i = index">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{i+1}}">
+                                        {{item.Name}}</a>
+                                </h4>
+                            </div>
+                            <div id="collapse{{i+1}}" class="panel-collapse collapse in">
+                                <p [innerHTML]="item.Description" class="panel-body"></p>
+                                <p class="panel-body" >السعر : {{item.Value}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-8" style="text-align: right">
+                <article class="post post-full clearfix">
+
+                    <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        [src]="shareLink"></iframe>
+
+
+                    <div class="entry-main">
+                        <div class="entry-header categoriName"><span class="label bg-3">المعارض</span>
+                            <h2 class="entry-title titleOfHead"><a>{{Name}}</a></h2>
+                        </div>
+                        <div class="entry-meta">
+                            من
+                            <span class="entry-meta__item categoryDate color-4">{{sDate | date : 'dd-MM-yyyy'}}</span>
+                            الى
+                            <span class="entry-meta__item categoryDate color-4">{{eDate | date : 'dd-MM-yyyy'}}</span>
+                        </div>
+                        <div class="entry-content">
+                            <p class="Des">{{Des}}</p>
+                            
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<button style="display: none" data-toggle="modal" data-target="#myModal" id="myModalaa">click</button>

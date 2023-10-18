@@ -1,0 +1,196 @@
+<div *ngIf="showDivWhenEntityFaild" class="whenEntityFiald" style="z-index:2500"></div>
+
+<header class="has-mobile-menu">
+    <div id="header-middlebar" class="pt--29 pb--29 bg--dark" style="direction:ltr">
+        <div class="container">
+            <div class="row rowForheader">
+                <div class="col-lg-4 col-md-4 col-sm-4" style="    margin-top: 2%;">
+                    <div class="header-action-items">
+                        <ul>
+                            <li class="item-social-layout2" style="float: left"> <a
+                                    href="https://www.facebook.com/Culture-Gate-103834857931056/?ref=page_internal"
+                                    target="_blank"><i class="fa fa-facebook" style="font-size:25px"></i></a></li>
+
+                            <li class="item-social-layout2"> <a
+                                    href="https://www.youtube.com/channel/UCGw9Yn-_j6CpysvnhVUeT4w/featured"
+                                    target="_blank"><i class="fa fa-youtube" style="font-size:25px"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="logo-area">
+                        <a (click)="gohome()" class="temp-logo" style="cursor: pointer" id="temp-logo">
+                            <img src="{{imageLogo}}" style="margin-left: 32px;" alt="logo" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+
+                <div style="margin-top: 2%;" class="col-lg-4 col-md-4 col-sm-4">
+                    <div>
+                        <ul class="ulUsers">
+                            <li class="liUsers">
+                                <a (click)="search()" title="Search">
+                                    <i class="flaticon-magnifying-glass">
+                                        <i class="fa fa-search"></i>
+                                    </i>
+                                </a>
+                            </li>
+                            <li class="liUsers">
+                                <a data-toggle="modal" data-target="#login-modal" title="Login">
+                                    <!-- <span *ngIf="notLogin" style="color: black" class="login">{{signIn}}</span> -->
+                                    <i data-toggle="modal" data-target="#myModal" *ngIf="notLogin" id="myModalaa"
+                                        class="flaticon-profile"><i class="fa fa-user"></i></i>
+                                </a>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="myModalLabel">
+                                    <app-sign></app-sign>
+                                </div>
+                                <a class="dropdown" *ngIf="whenLogin">
+                                    <span style="color: black" class="login">{{signIn}}</span>
+                                    <i id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" class="menuAn" class="fa fa-user"></i>
+                                    <ul class="dropdown-menu menuForProfile" aria-labelledby="dLabel">
+                                        <li>
+                                            <a [routerLink]="'profile'" class="dropAn">الصفحة الشخصية</a>
+                                        </li>
+                                        <li>
+                                            <a [routerLink]="'changePass'" class="dropAn">تغير كلمة المرور</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="logOut()" class="dropAn" style="cursor: pointer">خروج</a>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </li>
+                            <li class="liUsers">
+                                <a style="cursor: pointer" title="Cart">
+                                    <i class="flaticon-shopping-bag">
+                                        <i (click)="goToCheakOut()" class="fa fa-shopping-cart"></i>
+                                    </i>
+                                </a>
+                            </li>
+                            <li class="liUsers" style="font-family: sans-serif;border-right: none">
+                                <select (change)="selectChangeHandler($event.target.value)" [(ngModel)]="selectedLang"
+                                    style="background: none; color: #002d3e; border: 0; font-size:20px">
+                                    <option [value]="item" title="AR" *ngFor="let item of languages" selected>{{item}}
+                                    </option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="rt-sticky-placeholder"></div>
+    <nav class="navbar navbar-default" (scroll)="onWindowScroll($event)">
+        <div class="container-fluid test">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav firstUl">
+                    <li *ngFor="let item of menuList;" [ngClass]="{activee: item.isActive}">
+
+                        <a *ngIf="item.rout !== 'servForUser' && item.rout !== 'aboutEntity' && item.rout !== 'videos'"
+                            (click)="gotorout(item.rout,item.id)">{{item.name}}</a>
+
+
+                        <a *ngIf="aboutEntityArr?.length > 0 && item.rout == 'aboutEntity'" class="dropdown">
+                            <a id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="menuAn">
+                                {{item.name}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-col-1" aria-labelledby="dLabel">
+                                <li *ngFor="let name of aboutEntityArr;">
+                                    <a (click)="gotToRoutByCatg('aboutEntity',name.ArabicName)"
+                                        [routerLink]="['/aboutEntity',name.ID]" class="dropAn">{{name.ArabicName}}</a>
+                                </li>
+                            </ul>
+                        </a>
+
+                        <a *ngIf="item.rout == 'videos'" class="dropdown">
+                            <a id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="menuAn">
+                                {{item.name}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-col-1" aria-labelledby="dLabel">
+                                <!-- *ngIf="serviceMenu.hasCompitionsServicePermission" -->
+                                <li *ngFor="let item of videosMenuList">
+                                    <a (click)="gotToRoutByCatg('videos')" routerLink="item.route"
+                                        class="dropAn">{{item.name}}</a>
+                                </li>   
+                            </ul>
+                        </a>
+
+                        <a *ngIf="item.rout == 'servForUser'" class="dropdown">
+                            <a id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="menuAn">
+                                {{item.name}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-col-1" aria-labelledby="dLabel">
+                                <!-- *ngIf="serviceMenu.hasCompitionsServicePermission" -->
+                                <li *ngFor="let item of serviceMenuList">
+                                    <a (click)="gotToRoutByCatg('servForUser')" routerLink="{{item.route}}"
+                                        class="dropAn">{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </a>
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="modal fade homepage-popup" id="myModalOnLoad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <img src="../../../assets/images/finalLogo.png" style="width:300px" alt="">
+                <h1>بث تجريبي</h1>
+                <div class="progress">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="myModala" data-toggle="modal" data-target="#myModalOnLoad" style="display: none">click</button>
+
+<div class="modal fade homepage-popup" style="z-index: 3000" id="myModalEntity" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button (click)='goToBetaCg()' type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <img src="../../../assets/images/finalLogo.png" style="width:300px" alt="">
+                <h1>عفوا لا توجد جهة بهاذا الأسم</h1>
+                <button (click)='goToBetaCg()' style="font-size:20px" class="btn btn-primary">الذهاب الى
+                    الرئيسية</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="myModalForEntity" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+    data-target="#myModalEntity" style="display: none">click</button>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.9)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait. </p>
+</ngx-spinner>

@@ -1,0 +1,177 @@
+<div class="section-type-k">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <aside class="sidebar">
+                    <div class="widget">
+                        <div class="section-heading heading-dark" style="text-align: right">
+                            <h3 style="text-align: right" class="item-heading text-right">الفئات</h3>
+                        </div>
+                        <div class="widget-newsletter-subscribe-dark">
+                            <form [formGroup]="form">
+                                <div class="form-group mb-none">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3" *ngFor="let item of TicketsType; let index = index">
+                                            <h2>الفئة : {{item.Name}}</h2>
+                                            <h3 class="dark-blue mb-3"> السعر : <b>{{item.Price}}</b></h3>
+                                            <input type="number" formControlName="item{{index}}" class="form-control font-medium">
+                                            <p class="mt-3"> <b>{{item.AvaliableCount}} </b>: عدد تذاكر المتبقية</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <div class="widget-latest text-center ok">
+                                            <a (click)="saveEvent()" class="btn btn-primary btn-lg dark-blue"><i
+                                                    class="fa fa-check" aria-hidden="true"></i> حجز </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:20px" class="section-heading heading-dark">
+                        <h3 style="text-align: right" class="item-heading text-right">احداث الجهات</h3>
+                    </div>
+                    <owl-carousel [options]="SlideOption" [items]="Image" [carouselClasses]="['owl-theme', 'sliding']">
+                        <div class="item" *ngFor="let item of entityLatestEvents">
+                            <div class="" style="align-content: center ; text-align: center" (click)="goToDet(item.Id)">
+                                <img style="height:240px;width:100%" src={{item.Image}} />
+                                <div style="    position: absolute;
+                                background: white;
+                                top: 140px;
+                                right: 31px;
+                                padding: 10px 10px 0 10px;
+                                width: 300px;">
+                                    <div class="calendarr">
+                                        <span>{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                        <span style="margin-left:5px"><i style="color: #3eafb8"
+                                                class="fa fa-calendar"></i></span>
+                                    </div>
+                                    <p class="titleOfParg">{{item.Name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </owl-carousel>
+
+                    <!-- <section class="widget widget2">
+                        <h2 class="widget-title ui-title-inner text-right"> احداث الثقافة</h2>
+                        <div class="decor-right"></div>
+                        <div class="widget-content">
+                            <article class="post post-3 post-3_mod-a clearfix" (click)="goToDet(item.ID)"
+                                style="cursor: pointer" *ngFor="let item of LatestEvent">
+                                <div class="entry-media imagesForList"><img src="{{item.Image}}" alt="Foto"
+                                        class="img-responsive"></div>
+                                <div class="entry-main">
+                                    <div class="entry-header">
+                                        <h2 class="entry-title"><a>{{item.Name}}</a></h2>
+                                    </div>
+                                    <div class="entry-meta"><span
+                                            class="categoryDate color-4">{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                        <span style="margin-left:5px"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section> -->
+                </aside>
+            </div>
+            <div class="col-md-8" style="text-align: right">
+                <article class="post post-full clearfix">
+
+                    <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        [src]="shareLink"></iframe>
+
+                    <ul class="entry-meta meta-color-dark">
+                        <!-- <li><a href="#">{{TheaterName}}</a> <i class="fa fa-user"></i></li> -->
+                        <li>{{TheaterName}}<i class="fa fa-tag"></i></li>
+                        <li>{{startDate | date: 'dd-MM-yyyy'}}<i class="fa fa-calendar"></i></li>
+                    </ul>
+                    <div class="entry-main">
+                        <div class="entry-header categoriName"><span class="label bg-3"></span>
+                            <h2 class="entry-title titleOfHead"><a>{{name}}</a></h2>
+                        </div>
+                        <div class="entry-meta">
+                            <h2 class="entry-meta__item">{{location}}</h2>
+                        </div>
+                        <div class="entry-content">
+                            <div [innerHTML]="des"></div>
+                            <div>
+                                <button class=" btn tags " *ngFor="let tag of Tags">{{tag}}</button>
+                            </div>
+                            <hr>
+
+                            <div class="organized" style="margin-top: 7%">
+                                <h3>الجهات المنظمة</h3>
+                                <p class="font-medium">
+                                    <span *ngFor="let item of entitiesOrganized"
+                                        class="badge badge-info">{{item.Name}}#</span>
+                                </p>
+
+                            </div>
+
+                            <div *ngIf="showGallery" style="margin-top: 7%">
+                                <h3>معرض الصور</h3>
+                                <hr>
+                                <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                            </div>
+                            <hr>
+                            <h2 class="item-title">احداث متعلقة</h2>
+                            <owl-carousel [options]="SlideOptions" [items]="Images"
+                                [carouselClasses]="['owl-theme', 'sliding']">
+                                <div class="item" *ngFor="let item of TagsLatestEvent">
+                                    <div class="card" style="align-content: center ">
+                                        <img style="height:230px;width:100%" src={{item.Image}} />
+                                        <div class="calendarr">
+                                            <span>{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                            <span style="margin-left:5px"><i style="color: #3eafb8"
+                                                    class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <p class="titleOfParg">{{item.Name}}</p>
+                                    </div>
+                                </div>
+                            </owl-carousel>
+                            <!-- <section class="widget widget2">
+                                <h2 class="widget-title ui-title-inner text-right">احداث متعلقة</h2>
+                                <div class="decor-right"></div>
+                                <div class="widget-content row">
+                                    <article class="post post-3 post-3_mod-a clearfix col-md-6"
+                                        style="height:177px; cursor: pointer;" (click)="goToDet(item.ID)"
+                                        *ngFor="let item of TagsLatestEvent">
+                                        <div class="entry-media imagesForList">
+                                            <img src="{{item.Image}}" alt="Foto" class="img-responsive"></div>
+                                        <div class="entry-main">
+                                            <div class="entry-header">
+                                                <h2 class="entry-title"><a>{{item.Name}}</a></h2>
+                                            </div>
+                                            <div class="entry-meta"><span
+                                                    class="categoryDate color-4">{{item.StarDate | date: 'dd-MM-yyyy'}}</span>
+                                                <span style="margin-left:5px"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </section> -->
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<button style="display: none" data-toggle="modal" data-target="#myModal" id="myModalaa">click</button>
+
+
+<div class="modal pouppForBooking fade text-right" id="myModalForBoking" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">متابعة التصفح</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="goToBooking()">ادفع</button>
+            </div>
+        </div>
+    </div>
+</div>

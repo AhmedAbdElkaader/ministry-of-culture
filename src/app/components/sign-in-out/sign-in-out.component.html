@@ -1,0 +1,100 @@
+<!-- Modal -->
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header modalHead">
+            <button type="button" class="close inverseB" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center" id="myModalLabel">بوابة الثقافة</h4>
+        </div>
+        <div class="modal-body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active text-center"><a href="#sign" aria-controls="sign" role="tab"
+                        data-toggle="tab">تسجيل الدخول</a></li>
+                <li role="presentation" class="text-center"><a href="#register" aria-controls="register" role="tab"
+                        data-toggle="tab">انشاء حساب جديد</a></li>
+            </ul>
+            <div class="row">
+                <form class="animate">
+                    <!--TABS-->
+                    <div class="col-lg-8 col-md-8">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!--SIGN IN-->
+                            <div role="tabpanel" class="tab-pane fade in active" id="sign">
+                                <div id="myDIV" class="form-group">
+                                    <h3>تسجيل الدخول</h3>
+                                    <form [formGroup]="formLogin">
+                                        <input type="text" placeholder="اسم المستخدم" formControlName="username"
+                                            class="form-control"><br />
+                                        <input type="password" placeholder="كلمة المرور" formControlName="password"
+                                            class="form-control"><br />
+                                    </form>
+                                    <br /><button type="button" class="btn btn-primary" (click)="login()"
+                                        data-dismiss="modal" aria-label="Close" [disabled]="!formLogin.valid"
+                                        style="margin-bottom:15px;">تسجيل دخول</button>
+
+                                    <br /><a routerLink="/forgetPass" style="font-size:12px;margin-top:25px;"> هل نسيت
+                                        كلمة المرور ؟ </a>
+                                </div>
+                            </div>
+
+                            <!--SIGN UP-->
+                            <div role="tabpanel" class="tab-pane fade" id="register">
+                                <div id="myDIV1" class="form-group">
+                                    <h3>انشاء حساب جديد</h3>
+                                    <form [formGroup]="form">
+                                        <input type="text" placeholder="الأسم" formControlName="UserName"
+                                            class="form-control" /><br />
+
+                                        <input type="text" placeholder="البريد الالكتروني" formControlName="Email"
+                                            class="form-control" /><br />
+
+                                        <input type="date" placeholder="تاريخ الميلاد" formControlName="Date"
+                                            class="form-control" /><br />
+
+                                        <input type="password" placeholder="كلمة المرور" formControlName="Password"
+                                            class="form-control" /><br />
+
+                                        <input type="password" placeholder="تأكيد كلمة المرور"
+                                            formControlName="ConfirmPassword" class="form-control" /><br />
+                                    </form>
+                                    <br />
+                                    <button type="button" class="btn btn-primary " [disabled]="!form.valid"
+                                        data-dismiss="modal" aria-label="Close" (click)="register()"
+                                        style="margin-bottom:15px;">تسجيل</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--CONCEPTS-->
+                    <div class="concept col-lg-4 col-md-4">
+                        <img src="../../../assets/images/final-02.png" alt="cg" class="avatar" />
+                        <div class="row socialB">
+                            <span>إستمرار عبر</span><br>
+                            <a href="#"><i class="icon fa fa-facebook"></i></a>
+                            <a href="#"><i class="icon fa fa-google"></i></a>
+                        </div>
+                    </div>
+                    <!--CONCEPTS-->
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>

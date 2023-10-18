@@ -1,0 +1,65 @@
+<div class="mainDiv" infiniteScroll [infiniteScrollDistance]="3" 
+style="background: #f7f8fa"[infiniteScrollThrottle]="50"
+(scrolled)="onScroll()">
+    <div class="container">
+            <div class="row formStyle">
+                    <div class="col-md-12 inputControl">
+                        <input [formControl]="queryField" placeholder="ابحث عن الحدث" [(ngModel)]="name" name="name"
+                            type="text" class="form-control inputSearch">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div>
+    <div class="row">
+
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 no-equal-item" 
+            style="cursor: pointer"
+            (click)="goToDet(item.ID)"
+            [ngClass]="{
+                'pull-left' : lang === 2 || lang === 2,
+                'text-left' : lang === 2 || lang === 3,
+                'pull-right' : lang === 1 ,
+                'text-right' : lang === 1
+            }"
+            *ngFor="let item of eventsArr" >
+                <div class="blog-box-layout5">
+                    <div class="item-img">
+                        <a><img src="{{item.image}}" alt="Blog"></a>
+                        <a  class="hover-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="item-content ">
+                        <ul class="entry-meta meta-color-dark">
+
+                            <li style="margin-left:0"><i *ngIf="lang == 2" style="margin-right: 8px;" class="fa fa-calendar"></i>{{item.StartDate | date: 'dd-MM-yyyy'}}<i *ngIf="lang == 1" class="fa fa-calendar"></i></li>
+
+                        </ul>
+                        <h3 class="item-title">
+                            <a >
+                                {{item.Name}} </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+        <!-- <div class="col-md-4 pull-right" *ngFor="let item of eventsArr" style="cursor: pointer"
+         (click)="goToDet(item.ID)" [ngClass]="{
+            'pull-left' : lang === 2 || lang === 2,
+            'text-left' : lang === 2 || lang === 3
+        }">
+           <div class="card">
+            <img src="{{item.image}}" class="img-responsive">
+            <div>
+                <h1>{{item.Name}}</h1>
+                <p>{{item.Details}}</p>
+                <span>{{item.StartDate | date: 'dd-MM-yyyy'}}</span>
+                <span ><i class="fa fa-calendar" style="margin-left:5px"></i></span>
+            </div>
+            </div>
+        </div> -->
+    </div>
+
+</div>
+</div>

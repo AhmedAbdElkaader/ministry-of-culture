@@ -1,0 +1,43 @@
+<div class="mainDiv">
+    <div class="container">
+        <div class="row flex-row-reverse">
+
+            <div class="col-md-4" style="cursor: pointer ;" (click)="goToDet(id)">
+                <!-- <a href="{{link}}" style="text-decoration: none; color: black" target="_blank"> -->
+                    <div class="card" *ngIf="id === 0">
+                        <img src="{{image}}">
+                        <div>
+                            <h3>{{name}}</h3>
+                        </div>
+                    </div>
+                <!-- </a> -->
+            </div>
+            <div style="cursor: pointer ;" class="col-md-4 col-12" *ngFor="let item of museem">
+                <div class="card" (click)="goToDet(item.id)">
+                    <img src="../../../assets/images/{{item.image}}.jpg" class="img-responsive">
+                    <div>
+                        <h3>{{item.name}}</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="mainDiv">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div style="cursor: pointer ;" class="col-md-4 col-12"  *ngFor="let item of mussemArray" (click)="goToDet(item.Id)">
+                <div class="card">
+                    <img src="{{item.Image}}" class="img-responsive">
+                    <div>
+                        <h3>{{item.Name}}</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>        
+    </div>
+</div> -->

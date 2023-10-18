@@ -1,0 +1,131 @@
+<img src="http://admin.test.gebo.gov.eg/testimg/3861.jpg">
+<section class="setting">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-4">
+                    <ul class="list-group help-group">
+                        <div class="faq-list list-group nav nav-tabs">
+
+                            <a href="#tab0" class="list-group-item " [ngClass]="{'activee':idOfTap == 0,
+                        'notActive':idOfTap != 0}" (click)="updateActive(0)" role="tab" data-toggle="tab">  تقديم طلب خدمة نشر</a>
+
+                            <a href="#tab1" class="list-group-item tabOne" [ngClass]="{'activee':idOfTap == 1,
+                      'notActive':idOfTap != 1}" (click)="updateActive(1)" role="tab" data-toggle="tab"> التحقق من حالة
+                                الطلب</a>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="tab-content panels-faq">
+                        <div class="tab-pane active" id="tab0">
+                            <div class="panel-group" id="">
+                                <div class="panel panel-default panel-help">
+                                    <div class="setting-sec setting-secx">
+
+                                    </div>
+                                    <div class="panel-body">
+                                        <div style="text-align:right">
+                                            <form [formGroup]="form">
+                                                <div class="from-group" *ngFor='let item of inputsArray'
+                                                    style="padding:0 10px">
+                                                    <label>: {{item.Name}} <span
+                                                            *ngIf="item.isMandotry == true">*</span></label>
+                                                    <div *ngIf="item.DataType == 'DDL'">
+                                                        <select [formControlName]="item.Name"
+                                                            style="width: 150px;height: 30px;">
+                                                            <option>ذكر</option>
+                                                            <option>انثي</option>
+                                                        </select>
+                                                    </div>
+                                                    <input *ngIf="item.DataType != 'DDL' && item.DataType != 'file'"
+                                                        class="form-control" [formControlName]="item.Name"
+                                                        type="{{item.DataType}}">
+                                                    <input *ngIf="item.DataType == 'file'" accept=".pdf,.doc,.docx"
+                                                        (change)="handleFileSelect($event,item.Name)"
+                                                       
+                                                        class="form-control" type="{{item.DataType}}">
+                                                </div>
+                                                <button class="btn btn_primary pay btnSave" [disabled]="!form.valid"
+                                                    (click)="postForm()">تقديم
+                                                    الاستمارة</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab1">
+                            <div class="panel-group" id="">
+                                <div class="panel panel-default panel-help">
+                                    <div class="setting-sec setting-secx">
+
+                                    </div>
+                                    <div class="panel-body">
+                                        <h1 style="text-align: center" *ngIf="showErorrMasg == true">لا توجد طلبات سابقة
+                                        </h1>
+                                        <div class="card" (click)="getCompDetails(item.Id)"
+                                            *ngFor="let item of oldStauts">
+                                            <p>{{item.changeTime | date: 'dd-MM-yyyy'}} : تاريخ الظلب </p>
+                                            <p *ngIf="item.isAccepted == true">حالة الظلب : موافقة</p>
+                                            <p *ngIf="item.isAccepted == false">حالة الظلب : مراجعة</p>
+                                            <p *ngIf="item.isPaid == false">مدفوع : لا</p>
+                                            <p *ngIf="item.isPaid == true">مدفوع : نعم</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comptResultDeatils" *ngIf="showDetails">
+        <form>
+            <div class="form-group">
+                <label>تاريخ الطلب</label>
+                <input class="form-control " type="text" disabled value="{{fairResp[1].value}}">
+            </div>
+            <div class="form-group" *ngFor="let item of fairResp">
+                <label *ngIf="item.Name == 'x_bookname'">اسم الكتاب</label>
+                <label *ngIf="item.Name == 'x_NationalID'">الرقم القومي</label>
+                <input *ngIf="item.Name == 'x_NationalID'" class="form-control " type="text" disabled
+                    value="{{item.value}}">
+                <input *ngIf="item.Name == 'x_bookname'" class="form-control " type="text" disabled
+                    value="{{item.value}}">
+            </div>
+            <div class="form-group">
+                <label>حالة الطلب</label>
+                <input class="form-control " type="text" disabled value="{{fairStauts}}">
+            </div>
+            <div class="form-group">
+                <label>مدفوع</label>
+                <input class="form-control " type="text" disabled value="{{fairPaid}}">
+            </div>
+            <div class="form-group">
+                <label>اجتياز المرجعة التقنية</label>
+                <input *ngIf="fairResp[13].value == 'True'" class="form-control " type="text" disabled value="تم">
+                <input *ngIf="fairResp[13].value == '' || fairResp[13].value == 'False'" class="form-control " type="text" disabled value="لا">
+            </div>
+            <div class="form-group">
+                <label>اجتياز التصحيح اللغوي</label>
+                <input *ngIf="fairResp[12].value == 'True'" class="form-control " type="text" disabled value="تم">
+                <input *ngIf="fairResp[12].value == '' || fairResp[13].value == 'False'" class="form-control " type="text" disabled value="لا">
+            </div>
+            <div class="form-group">
+                <label>اجتياز المرجعة العامة</label>
+                <input *ngIf="fairResp[11].value == 'True'" class="form-control " type="text" disabled value="تم">
+                <input *ngIf="fairResp[11].value == '' || fairResp[13].value == 'False'" class="form-control " type="text" disabled value="لا">
+            </div>
+            <div class="form-group">
+                <label>تم الاعتماد</label>
+                <input *ngIf="fairResp[10].value == 'True'" class="form-control " type="text" disabled value="تم">
+                <input *ngIf="fairResp[10].value == '' || fairResp[13].value == 'False'" class="form-control " type="text" disabled value="لا">
+            </div>
+        </form>
+    </div>
+</section>
+<!-- end setting -->

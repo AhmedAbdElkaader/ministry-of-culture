@@ -1,0 +1,69 @@
+
+<section class="blog-wrap-layout11" style="position: relative" *ngIf="responsNotEmpthy">
+    <h2 class="item-heading">{{events}}</h2>
+  <div class="container">
+    <div class="row gutters-50">
+      <div  class="col-lg-8 order-0" [ngClass]="{'contetForEventEnglish':langId == 2,
+      'contetForEventArabic':langId == 1}" >
+        <owl-carousel [options]="SlideOptions" [items]="Images" [carouselClasses]="['owl-theme', 'sliding']">
+          <div class="item" *ngFor="let img of eventsArr">
+            <div style="align-content: center">
+              <img style="height: 530px;width:100%" src={{img.image}} />
+            </div>
+          </div>
+        </owl-carousel>
+        <div class="slideDiv card" *ngFor="let item of eventsArr">
+            <p style="margin: 15px 2px 20px 0;"><i *ngIf="langId == 2" style="margin-left: 2px" class="fa fa-calendar"></i>
+              {{item.StartDate | date: 'dd-MM-yyyy'}}
+              <i *ngIf="langId == 1" style="margin-left: 2px ; color: #3eafb8" class="fa fa-calendar"></i></p>
+              <h2 style="margin: 15px 5px 20px 0; font-weight: bold">{{item.Name}}</h2>
+        </div>
+      </div>
+
+      
+      <div class="col-lg-4 sidebar-widget-area sidebar-break-md order-1" dir="rtl">
+          <div class="widget">
+            <div class="section-heading heading-dark">
+              <h3 style="text-align: right;" class="item-heading text-right">{{gawlaSkafia}}</h3>
+            </div>
+            <div class="widget-about-3">
+              <div class="item-img">
+                <img src="{{cardImage}}" style="width: 100% ; height: 250px;"
+                 alt="Brand" class="img-fluid">
+              </div>
+              <div class="item-content">
+                <ul class="entry-meta meta-color-dark">
+                  <li><i class="fa fa-calendar" style="font-size:20px;"></i><span style="font-size:20px">{{cardDateNumberDay}}</span>
+                    <span style="font-size:20px">{{cardDateNameMonth}}</span><br />
+                    <span style="font-size:20px">{{cardDateNameDay}}</span>
+                  </li>
+                </ul>
+                <p>
+                  {{cardName}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-newsletter-subscribe-dark">
+              <div class="form-group mb-none">
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <a href="#">
+                      <img src="../../../assets/images/android.png" />
+                    </a>
+                  </div>
+                  <div class="col-md-12">
+                    <a href="#">
+                      <img src="../../../assets/images/itunes.png" />
+                    </a>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>

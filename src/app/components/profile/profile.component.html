@@ -1,0 +1,1177 @@
+<!-- start profile -->
+<section class="nw_profile">
+    <div class="container-fluid">
+        <div class="pf_cover row"[ngStyle]="styleObject()">
+            <div class="chat_file">
+                <input type="file" name="file" id="file3" class="inputfile" (change)="handleFileSelect($event,'cover')" />
+                <label for="file3"><i class="fa fa-camera"></i>تحرير صورة الغلاف</label>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="pf_pic">
+                    <img src="{{profileImage}}" class="img-responsive prf_img">
+                    <div class="chat_file">
+                        <input (change)="handleFileSelect($event,'profiePhoto')" type="file" name="file" id="file1" class="inputfile"  />
+                        <label for="file1"><i class="fa fa-camera"></i></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row pf_des">
+            
+                <div class="col-md-4 col-md-offset-4 pf_nm" style="float: left">
+                    <h3>{{userName}}<i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top"
+                            title="Verified account"></i></h3>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pf_ex">
+                        <h4>معلومات</h4>
+                        <span class="blockED">
+                            <a href="" (click)="updatePer(item,i)" data-toggle="modal" data-target="#edit_person"><i
+                                    class="fa fa-edit"></i></a>
+                        </span>
+                        <div class="row">
+                            <div *ngFor="let item of profileInfo; let i=index">
+                                <div class="col-md-12 card" >
+                                    <div>
+                                        <p class="dataView text-right"> {{item.NameAr}} : الاسم</p>
+                                        <p class="dataView text-right">{{item.NickNameAr}} : اللقب</p>
+                                        <p class="dataView text-right"> {{item.Email}} : البريد الالكتروني</p>
+                                        <p class="dataView text-right"> {{item.BirthDate}} : تاريخ الميلاد </p>
+                                        <p class="dataView text-right"> {{item.BirthLocation}} : مكان الميلاد</p>
+                                        <p class="dataView text-right">{{item.NationalID}} : الرقم القومي</p>
+                                        <p class="dataView text-right"> {{item.Address}} :  العنوان</p>
+                                        <p class="dataView text-right"> {{item.Phone}} : التليفون</p>
+                                        <p class="dataView text-right"> {{item.Mobile}} : الموبايل</p>
+                                        <p class="dataView text-right"> {{item.Fax}} : فاكس</p>
+                                        <p class="dataView text-right"> {{item.Website}} : الموقع الالكتروني</p>
+                                        <p class="dataView text-right"> {{item.Intersted}} : الاهتمامات</p>
+                                        <p class="dataView text-right"> {{item.OtherData}} : تفاصيل اخرى</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pf_ex">
+                        <h4> الجمعيات</h4>
+                        <a href="" class="pf_edit" data-toggle="modal" data-target="#prf_skills"><i
+                                class="fa fa-plus"></i></a>
+                        <div *ngIf="charites.length == 0">
+                            <p class="alert alert-danger text-right">
+                                لا توجد بيانات
+                            </p>
+                        </div>
+
+                        <div class="row" *ngIf="charites.length != 0">
+                            <div *ngFor="let item of charites">
+                                <div class="col-md-10 card">
+                                    <div>
+                                        <p class="dataView text-right">{{item.Name}} : الاسم</p>
+                                        <p class="dataView text-right">{{item.Role}} : الدور</p>
+                                        <p class="dataView text-right">{{item.Responsibilities}} : المسئوليات</p>
+                                        <p class="dataView text-right">{{item.Year}} : سنة الحصول عليها</p>
+                                    </div>
+                                </div>
+                                <div class="editsB col-md-2">
+                                    <span class="blockED">
+                                        <a href="" (click)="updateChar(item,i)" data-toggle="modal" data-target="#edit_charites"><i
+                                                class="fa fa-edit"></i></a>
+                                    </span>
+                                    <span class="blockED">
+                                        <a href="" (click)="afterCharDelete(item.Id,i)" data-toggle="modal" data-target="#delete_charites"><i
+                                                class="fa fa-trash"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pf_ex">
+                        <h4> النقابات</h4>
+                        <a href="" class="pf_edit" data-toggle="modal" data-target="#prf_experience"><i
+                                class="fa fa-plus"></i></a>
+                        <div *ngIf="union.length == 0">
+                            <p class="alert alert-danger text-right">
+                                لا توجد بيانات
+                            </p>
+                        </div>
+
+                        <div class="row" *ngIf="union.length != 0">
+                            <div *ngFor="let item of union; let i=index">
+                                <div class="col-md-10 card">
+                                    <div>
+                                        <p class="dataView text-right">{{item.Name}} : الاسم</p>
+                                        <p class="dataView text-right">{{item.Division}} : الشعبة</p>
+                                        <p class="dataView text-right">{{item.Side}} : جهة الاصدار</p>
+                                        <p class="dataView text-right">{{item.Year}} : سنة الحصول عليها</p>
+                                    </div>
+                                </div>
+                                <div class="editsB col-md-2">
+                                    <span class="blockED">
+                                        <a href="" (click)="updateUni(item,i)" data-toggle="modal" data-target="#edit_union"><i
+                                                class="fa fa-edit"></i></a>
+                                    </span>
+                                    <span class="blockED">
+                                        <a href="" (click)="afterUniDelete(item.Id,i)" data-toggle="modal" data-target="#delete_union"><i
+                                                class="fa fa-trash"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pf_ex">
+                        <h4> التعليم</h4>
+                        <a href="" class="pf_edit" data-toggle="modal" data-target="#prf_educate"><i
+                                class="fa fa-plus"></i></a>
+                        <div *ngIf="education.length == 0">
+                            <p class="alert alert-danger text-right">
+                                لا توجد بيانات
+                            </p>
+                        </div>
+                        <div class="row" *ngIf="education.length != 0">
+                            <div *ngFor="let item of education; let i=index">
+                                <div class="col-md-10 card">
+                                    <div>
+                                        <p class="dataView text-right">{{item.Name}} : الاسم</p>
+                                        <p class="dataView text-right">{{item.Type}} : النوع</p>
+                                        <p class="dataView text-right">{{item.Side}} : جهة الاصدار</p>
+                                        <p class="dataView text-right">{{item.Year}} : سنة الحصول عليها</p>
+                                    </div>
+                                </div>
+                            <div class="editsB col-md-2">
+                                <span class="blockED">
+                                    <a  (click)="updateEdu(item,i)" data-toggle="modal"
+                                     data-target="#edit_education"><i
+                                            class="fa fa-edit"></i></a>
+                                </span>
+                                <span class="blockED">
+                                    <a (click)="afterEduDelete(item.Id)" data-toggle="modal" 
+                                    data-target="#delete_education"><i
+                                            class="fa fa-trash"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="pf_ex">
+                        <h4> المنح و البعثات</h4>
+                        <a href="" class="pf_edit" data-toggle="modal" data-target="#prf_certificate"><i
+                                class="fa fa-plus"></i></a>
+                        <div *ngIf="grant.length == 0">
+                            <p class="alert alert-danger text-right">
+                                لا توجد بيانات
+                            </p>
+                        </div>
+                        <div class="row" *ngIf="grant.length != 0">
+                            <div *ngFor="let item of grant; let i=index">
+                                <div class="col-md-10 card">
+                                    <div>
+                                        <p class="dataView text-right">{{item.Name}} : الاسم</p>
+                                        <p class="dataView text-right">{{item.Side}} : جهة الاصدار</p>
+                                        <p class="dataView text-right">{{item.YearFrom}} : من سنة</p>
+                                        <p class="dataView text-right">{{item.YearTo}} : الى سنة</p>
+                                    </div>
+                                </div>
+                                <div class="editsB col-md-2">
+                                    <span class="blockED">
+                                        <a href="" (click)="updateGrant(item,i)" data-toggle="modal" data-target="#edit_grant"><i
+                                                class="fa fa-edit"></i></a>
+                                    </span>
+                                    <span class="blockED">
+                                        <a href="" (click)="afterSchDelete(item.Id,i)" data-toggle="modal" data-target="#delete_grant"><i
+                                                class="fa fa-trash"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pf_ex">
+                        <h4>الجوائز و الأوسمة</h4>
+                        <a href="" class="pf_edit" data-toggle="modal" data-target="#prf_prize"><i
+                                class="fa fa-plus"></i></a>
+                        <div *ngIf="prize.length == 0">
+                            <p class="alert alert-danger text-right">
+                                لا توجد بيانات
+                            </p>
+                        </div>
+                        <div class="row" *ngIf="prize.length != 0">
+                            <div *ngFor="let item of prize; let i=index">
+                                <div class="col-md-10 card">
+                                    <div>
+                                        <p class="dataView text-right">{{item.Name}} : الاسم</p>
+                                        <p class="dataView text-right">{{item.Year}} : سنة الحصول عليها</p>
+                                        <p class="dataView text-right">{{item.Description}} : وصف الجائزة</p>
+                                    </div>
+                                </div>
+                                <div class="editsB col-md-2">
+                                    <span class="blockED">
+                                        <a href="" (click)="update(item,i)" data-toggle="modal"
+                                            data-target="#edit_prize"><i class="fa fa-edit"></i></a>
+                                    </span>
+                                    <span class="blockED">
+                                        <a href="" data-toggle="modal" data-target="#delete_prize"><i
+                                            (click)="afterDelet(item.Id,i)"    class="fa fa-trash"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--END OF RIGHT SECTIONS-->
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+
+
+<!-- ADD SECTIONS-->
+<!-- #pf_details -->
+<div class="modal fade" id="pf_details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">أضف بياناتك الجديدة هنا</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>البريد الالكترونى</label>
+                            <input type="email" class="form-control" placeholder="البريد الالكترونى" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>رقم التليفون</label>
+                            <input type="text" class="form-control" placeholder="رقم التليفون" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>تاريخ الميلاد</label>
+                            <input type="text" class="form-control" placeholder="تاريخ الميلاد" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>الجنس</label><br>
+                            <input type="radio" name="gender" value="male"> ذكر
+                            <input type="radio" name="gender" value="female"> انثي
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>البد</label>
+                            <input type="text" class="form-control" placeholder="البد" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>المدينه</label>
+                            <input type="text" class="form-control" placeholder="المدينه" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">احفظ التغييرات</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_socialm -->
+<div class="modal fade" id="prf_socialm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">أضف روابط الشبكات الاجتماعية الخاصة بك</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Paste the link to your Facebook account here</label>
+                    <input type="text" class="form-control" placeholder="Facebook Link" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Paste the link to your Twitter account here</label>
+                    <input type="text" class="form-control" placeholder="Twitter Link" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Paste the link to your Instagram account here</label>
+                    <input type="text" class="form-control" placeholder="Instagram Link" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Paste the link to your Linkedin account here</label>
+                    <input type="text" class="form-control" placeholder="Linkedin Link" />
+                </div>
+            </div>
+        </div> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>موقع الالكترونى</label>
+                            <input type="text" class="form-control" placeholder="موقع الالكترونى" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>الموقع</label>
+                            <input type="text" class="form-control" placeholder="الموقع" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">احفظ التغييرات</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_hr -->
+<div class="modal fade" id="prf_hr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">تغيير بالساعة</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row prf_mdl">
+                    <div class="col-md-12">
+                        <span class="pull-left">معدل ملفك الشخصي: <span><b> $ 5.00/س</b></span></span>
+                    </div>
+                </div>
+                <div class="row prf_mdl">
+                    <div class="col-md-7">
+                        <h5><b>تقييمك</b></h5>
+                        <p>
+                            <span>المبلغ الإجمالي الذي سيراه العميل<span> on your proposal</span>.</span>
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="inp1">$</span>
+                            <input type="text" class="form-control" placeholder="00.00" aria-describedby="inp1">
+                            <span class="input-group-addon inp_add" id="inp1">/hr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">حفظ التغييرات</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_name -->
+<div class="modal fade" id="prf_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">تفاصيل الملف الشخصي</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>الاسم</label>
+                            <input class="form-control" placeholder="الاسم" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>المسمي الوظيفي</label>
+                            <input class="form-control" placeholder="المسمي الوظيفي" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>سنوات الخبره</label>
+                            <input class="form-control" placeholder="سنوات الخبره" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>عدد الساعات ب العمل بالاسبوع</label>
+                            <input class="form-control" placeholder="عدد الساعات ب العمل بالاسبوع" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">حفظ التغييرات</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_PERSON INFORMATION -->
+<div class="modal fade" id="prf_data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">بيانات الشخص</h4>
+            </div>
+            <form [formGroup]="aboutForm" class="form-group" (ngSubmit)="addPer()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>اسم المثقف</label>
+                            <input formControlName="Name" type="text" placeholder="اسم المثقف" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>لقب المثقف</label>
+                            <input formControlName="Nick" type="text" placeholder="لقب المثقف" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>البريد الالكتروني</label>
+                            <input formControlName="Email" type="text" placeholder="البريد الالكتروني"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>تاريخ الميلاد</label>
+                            <input formControlName="BirthDate" type="date" placeholder="تاريخ الميلاد" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>مكان الميلاد</label>
+                            <input formControlName="BirthLocation" type="text" placeholder="مكان الميلاد"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>الرقم القومي</label>
+                            <input formControlName="NationalID" type="text" placeholder="الرقم القومي" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>العنوان</label>
+                            <input formControlName="Address" type="text" placeholder="العنوان" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>التليفون</label>
+                            <input formControlName="Phone" type="text" placeholder="التليفون" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>الموبايل</label>
+                            <input formControlName="Mobile" type="text" placeholder="الموبايل" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>فاكس</label>
+                            <input formControlName="Fax" type="text" placeholder="فاكس" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>الموقع الالكتروني</label>
+                            <input formControlName="Website" type="text" placeholder="الموقع الالكتروني"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>اهتمامات المثقف</label>
+                            <input formControlName="Intersted" type="text" placeholder="اهتمامات المثقف"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label>تفاصيل اخرى</label>
+                            <input formControlName="OtherData" type="text" placeholder="تفاصيل اخرى" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">اضافة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_skills -->
+<div class="modal fade" id="prf_skills" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-right">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">المهارات</h4>
+                </div>
+                <form [formGroup]="charForm" (ngSubmit)="addChar()" class="form-group">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input formControlName="Name" type="text" class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الدور</label>
+                        <input formControlName="Role" type="text" class="form-control" placeholder="الدور">
+                    </div>
+                    <div class="col-md-12">
+                        <label>المسئوليات</label>
+                        <input formControlName="Responsibilities" type="text" class="form-control"
+                            placeholder="المسئوليات">
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة الحصول عليها</label>
+                        <input formControlName="Year" type="text" class="form-control" placeholder="سنة الحصول عليها">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">اضافة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_certificate -->
+<div class="modal fade" id="prf_certificate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">أضف منحة أو بعثة</h4>
+                </div>
+                <form [formGroup]="grantForm" (ngSubmit)="addGrant()" class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input formControlName="Name" type="text" class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>جهة الاصدار</label>
+                        <input formControlName="Side" type="text" class="form-control" placeholder="الشعبة">
+                    </div>
+                    <div class="col-md-12">
+                        <label>من سنة</label>
+                        <input formControlName="YearFrom" type="text" class="form-control" placeholder=" من سنة">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الى سنة</label>
+                        <input formControlName="YearTo" type="text" class="form-control" placeholder="الى سنة">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">اضافة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_educate -->
+<div class="modal fade" id="prf_educate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-right" id="myModalLabel">إضافة التعليم</h4>
+            </div>
+            <form class="form-group text-right" [formGroup]="eduForm" (ngSubmit)="addEdu()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>الاسم</label>
+                            <input formControlName="Name" type="text" class="form-control" placeholder="الاسم">
+                        </div>
+                        <div class="col-md-12">
+                            <label>نوع</label>
+                            <input formControlName="Type" type="text" class="form-control" placeholder="نوع">
+                        </div>
+                        <div class="col-md-12">
+                            <label>جهة الاصدار</label>
+                            <input formControlName="Side" type="text" class="form-control" placeholder="جهة الاصدار">
+                        </div>
+                        <div class="col-md-12">
+                            <label>سنة الحصول عليها</label>
+                            <input formControlName="Year" type="text" class="form-control"
+                                placeholder="سنة الحصول عليها">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">ااضافة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_experience -->
+<div class="modal fade" id="prf_experience" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">أضف نقابة</h4>
+                </div>
+                <form [formGroup]="unionForm" (ngSubmit)="addUni()" class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input formControlName="Name" type="text" class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الشعبة</label>
+                        <input formControlName="Division" type="text" class="form-control" placeholder="الشعبة">
+                    </div>
+                    <div class="col-md-12">
+                        <label>جهة الاصدار</label>
+                        <input formControlName="Side" type="text" class="form-control" placeholder="جهة الاصدار">
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة الحصول عليها</label>
+                        <input formControlName="Year" type="text" class="form-control" placeholder="سنة الحصول عليها">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">اضافة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- #prf_prize -->
+<div class="modal fade" id="prf_prize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">أضف جائزة</h4>
+                </div>
+                <form [formGroup]="prizeForm" (ngSubmit)="addPrize()" class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input formControlName="Name" type="text" class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة الحصول عليها</label>
+                        <input formControlName="Year" type="text" class="form-control" placeholder="سنة الحصول عليها">
+                    </div>
+                    <div class="col-md-12">
+                        <label>وصف الجائزة</label>
+                        <input formControlName="Description" type="text" class="form-control" placeholder="وصف الجائزة">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" aria-label="Close" data-dismiss="modal">اضافة</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ADD SECTIONS-->
+
+<!-- EDIT SECTIONS-->
+<!--#edit_person-->
+<div class="modal fade" id="edit_person" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">تعديل</h4>
+                </div>
+                <form class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>اسم المثقف</label>
+                        <input [(ngModel)]="PerName" name="Name" 
+                        type="text" value="{{PerrName}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>لقب المثقف</label>
+                        <input [(ngModel)]="PerNick" name="Nick" 
+                        type="text" value="{{PerNick}}"
+                        class="form-control" placeholder="لقب المثقف">
+                    </div>
+                    <div class="col-md-12">
+                        <label>البريد الالكتروني</label>
+                        <input [(ngModel)]="PerEmail" name="Email" 
+                        type="text" value="{{PerEmail}}"
+                        class="form-control" placeholder="البريد الالكترونى">
+                    </div>
+                    <div class="col-md-12">
+                        <label>تاريخ الميلاد</label>
+                        <input [(ngModel)]="PerBirthDate" name="BirthDate" 
+                        type="date" value="{{PerBirthDate}}"
+                        class="form-control" placeholder="تاريخ الميلاد">
+                    </div>
+                    <div class="col-md-12">
+                        <label>مكان الميلاد</label>
+                        <input [(ngModel)]="PerBirthLocation" name="BirthLocation" 
+                        type="text" value="{{PerBirthLocation}}"
+                        class="form-control" placeholder="مكان الميلاد">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الرقم القومي</label>
+                        <input [(ngModel)]="PerNationalID" name="NationalID" 
+                        type="text" value="{{PerNationalID}}"
+                        class="form-control" placeholder="الرقم القومي">
+                    </div>
+                    <div class="col-md-12">
+                        <label>العنوان</label>
+                        <input [(ngModel)]="PerAddress" name="Address" 
+                        type="text" value="{{PerAddress}}"
+                        class="form-control" placeholder="العنوان">
+                    </div>
+                    <div class="col-md-12">
+                        <label>التليفون</label>
+                        <input [(ngModel)]="PerPhone" name="Phone" 
+                        type="text" value="{{PerPhone}}"
+                        class="form-control" placeholder="التليفون">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الموبايل</label>
+                        <input [(ngModel)]="PerMobile" name="Mobile" 
+                        type="text" value="{{PerMobile}}"
+                        class="form-control" placeholder="الموبايل">
+                    </div>
+                    <div class="col-md-12">
+                        <label>فاكس</label>
+                        <input [(ngModel)]="PerFax" name="Fax" 
+                        type="text" value="{{PerFax}}"
+                        class="form-control" placeholder="فاكس">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الموقع الالكتروني</label>
+                        <input [(ngModel)]="PerWebsite" name="Website" 
+                        type="text" value="{{PerWebsite}}"
+                        class="form-control" placeholder="الموقع الالكترونى">
+                    </div>
+                    <div class="col-md-12">
+                        <label>اهتمامات المثقف</label>
+                        <input [(ngModel)]="PerIntersted" name="Intersted" 
+                        type="text" value="{{PerIntersted}}"
+                        class="form-control" placeholder="اهتامات المثقف">
+                    </div>
+                    <div class="col-md-12">
+                        <label>تفاصيل اخرى</label>
+                        <input [(ngModel)]="PerOtherData" name="OtherData" 
+                        type="text" value="{{PerOtherData}}"
+                        class="form-control" placeholder="تفاصيل اخرى">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="saveInfo()" class="btn btn-primary" data-dismiss="modal">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--#edit_charites-->
+<div class="modal fade" id="edit_charites" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">تعديل</h4>
+                </div>
+                <form class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input [(ngModel)]="charName" name="Name" 
+                        type="text" value="{{charName}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12 ">
+                        <label>الدور</label>
+                        <input [(ngModel)]="charRole" name="Role" 
+                        type="text" value="{{charRole}}"
+                        class="form-control" placeholder="الدور">
+                    </div>
+                    <div class="col-md-12">
+                        <label>المسئوليات</label>
+                        <input [(ngModel)]="charResponsibilities" name="Responsibilities" 
+                        type="text" value="{{charResponsibilities}}"
+                        class="form-control" placeholder="المسئوليات">
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة الحصول عليها</label>
+                        <input [(ngModel)]="charYear" name="Year" 
+                        type="text" value="{{charYear}}"
+                        class="form-control" placeholder="سنة الحصول عليها">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="editChar()" class="btn btn-primary" data-dismiss="modal">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--#edit_union-->
+<div class="modal fade" id="edit_union" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">تعديل</h4>
+                </div>
+                <form class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input [(ngModel)]="uniName" name="Name" 
+                        type="text" value="{{uniName}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12 ">
+                        <label>الشعبة</label>
+                        <input [(ngModel)]="uniDivision" name="Divison" 
+                        type="text" value="{{uniDivision}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>جهة الاصدار</label>
+                        <input [(ngModel)]="uniSide" name="Side" 
+                        type="text" value="{{uniSide}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة الحصول عليها</label>
+                        <input [(ngModel)]="uniYear" name="Year" 
+                        type="text" value="{{uniYear}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="editUni()" class="btn btn-primary" data-dismiss="modal">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--#edit_education-->
+<div class="modal fade" id="edit_education" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">تعديل</h4>
+                </div>
+                <form class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input [(ngModel)]="eduName"  name="Name" 
+                        type="text" value="{{eduName}}"
+                        class="form-control" placeholder="الاسم" >
+                    </div>
+                    <div class="col-md-12">
+                        <label>النوع</label>
+                        <input [(ngModel)]="eduType"  name="Type" 
+                        type="text" value="{{eduType}}"
+                        class="form-control" placeholder="النوع" >
+                    </div>
+                    <div class="col-md-12">
+                        <label>جهة الاصدار</label>
+                        <input [(ngModel)]="eduSide"  name="Side" 
+                        type="text" value="{{eduSide}}"
+                        class="form-control" placeholder="جهة الاصدار" >
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة</label>
+                        <input [(ngModel)]="eduYear"  name="Year" 
+                        type="text" value="{{eduYear}}"
+                        class="form-control" placeholder="سنة" >
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="editEdu()" class="btn btn-primary" data-dismiss="modal">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--#edit_grant-->
+<div class="modal fade" id="edit_grant" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">تعديل</h4>
+                </div>
+                <form class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input [(ngModel)]="schName"  name="Name" 
+                        type="text" value="{{schName}}"
+                        class="form-control" placeholder="الاسم" >
+                    </div>
+                    <div class="col-md-12">
+                        <label>جهة الاصدار</label>
+                        <input [(ngModel)]="schSide"  name="Side" 
+                        type="text" value="{{schSide}}"
+                        class="form-control" placeholder="جهة الاصدار">
+                    </div>
+                    <div class="col-md-12">
+                        <label>من سنة</label>
+                        <input [(ngModel)]="schYearFrom"  name="YearFrom" 
+                        type="text" value="{{schYearFrom}}"
+                        class="form-control" placeholder="من سنة">
+                    </div>
+                    <div class="col-md-12">
+                        <label>الى سنة</label>
+                        <input [(ngModel)]="schYearTo"  name="YearTo" 
+                        type="text" value="{{schYearTo}}"
+                        class="form-control" placeholder="الى سنة">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="editGrant()" class="btn btn-primary" data-dismiss="modal">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--#edit_prize-->
+<div class="modal fade" id="edit_prize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-right" id="myModalLabel">تعديل</h4>
+                </div>
+                <form class="form-group text-right">
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label>الاسم</label>
+                        <input [(ngModel)]="Name" name="Name" type="text" value="{{Name}}"
+                        class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-12">
+                        <label>سنة الحصول عليها</label>
+                        <input [(ngModel)]="Year" name="Year" type="text" 
+                        class="form-control" value="{{Year}}"
+                         placeholder="سنة الحصول عليها">
+                    </div>
+                    <div class="col-md-12">
+                        <label>وصف الجائزة</label>
+                        <input  [(ngModel)]="Description"  name="Description" 
+                        type="text" value="{{Description}}"
+                        class="form-control" placeholder="وصف الجائزة">
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="editPrize()" class="btn btn-primary" data-dismiss="modal">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- /EDIT SECTIONS-->
+
+<!-- DELETE SECTIONS-->
+<!--#delete_person-->
+<div class="modal fade" id="delete_person" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تأكيد الحذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من حذف هذا العنصر ...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnDel" data-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger btnDel" (click)="deletePer()" data-dismiss="modal">حذف</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--#delete_charites-->
+<div class="modal fade" id="delete_charites" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تأكيد الحذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من حذف هذا العنصر ...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnDel" data-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger btnDel" (click)="deleteChar()"data-dismiss="modal">حذف</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--#delete_union-->
+<div class="modal fade" id="delete_union" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تأكيد الحذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من حذف هذا العنصر ...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnDel" data-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger btnDel" (click)="deleteUni()"data-dismiss="modal">حذف</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--#delete_education-->
+<div class="modal fade" id="delete_education" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تأكيد الحذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من حذف هذا العنصر ...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnDel" data-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger btnDel" (click)="deleteEdu()" data-dismiss="modal">حذف</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--#delete_grant-->
+<div class="modal fade" id="delete_grant" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تأكيد الحذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من حذف هذا العنصر ...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnDel" data-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger btnDel" (click)="deleteGrant()" data-dismiss="modal">حذف</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--#delete_prize-->
+<div class="modal fade" id="delete_prize" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">تأكيد الحذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>هل انت متأكد من حذف هذا العنصر ...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnDel" data-dismiss="modal">اغلاق</button>
+                <button type="button" class="btn btn-danger btnDel" (click)="deletePrize()" data-dismiss="modal">حذف</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--#delete_prize-->
+<!-- /DELETE SECTIONS-->
+<!-- data-dismiss="modal" -->

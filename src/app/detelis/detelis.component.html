@@ -1,0 +1,140 @@
+<div class="section-type-k">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-push-4" style="text-align: right">
+            <article class="post post-full clearfix">
+                <iframe *ngIf="showIframe" width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [src]="shareLink"></iframe>
+              <!-- <div class="entry-media"><img src="{{imagePath}}" class="img-responsive"></div> -->
+              <ul class="entry-meta meta-color-dark">
+                <li><a href="#">{{ArticalName}}</a> بواسطة <i class="fa fa-user"></i></li>
+                <li>{{CategoryName}}<i class="fa fa-tag"></i></li>
+                <li>{{date | date : 'dd-MM-yyyy'}}<i class="fa fa-calendar"></i></li>
+              </ul>
+              <div class="entry-main">
+                <div class="entry-header categoriName">
+                  <h2 class="entry-title titleOfHead"><a>{{title}}</a></h2>
+                  <hr>
+                </div>
+              
+                <div class="entry-content">
+                  <div style="color:#646464" [innerHTML]="desc"></div>
+                  <div>
+                    <button class=" btn tags " *ngFor="let tag of TagsList">{{tag}}</button>
+                  </div>
+    
+                  <section *ngIf="showAlbum">
+                    <h3 class=" ui-title-inner ui-title-inner_spacing_sm ">{{titleOFAlbum}}</h3>
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                  </section>
+    
+                  <section *ngIf="showVideo">
+                    <h3 class=" ui-title-inner ui-title-inner_spacing_sm ">{{titleOFVideo}}</h3>
+                    <hr>
+                    <iframe style="width: 100% ; height: 315px;" [src]="VediosLink" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+                  </section>
+    
+                  <h3 class="ui-title-inner"> اخبار الكاتب </h3>
+                  <owl-carousel [options]="SlideOptions" [items]="Images" [carouselClasses]="['owl-theme', 'sliding']">
+                    <div class="item" *ngFor="let item of AuthorNews">
+                      <div class="card" style="align-content: center ">
+                        <img style="height:230px;width:100%" src={{item.Image}} />
+                        <div class="calendarr">
+                          <span>{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                          <span style="margin-left:5px"><i style="color: #3eafb8" class="fa fa-calendar"></i></span>
+                        </div>
+                        <p class="titleOfParg">{{item.Name}}</p>
+                      </div>
+                    </div>
+                  </owl-carousel>
+                </div>
+              </div>
+            </article>
+            <section class="section-comment" *ngIf="showComments">
+              <h3 class="comment-title ui-title-inner ui-title-inner_spacing_sm">التعليقات</h3>
+              <div class="decor-left"></div>
+              <ul class="comments-list list-unstyled">
+                <li *ngFor="let item of commentsArr">
+                  <article class="comment clearfix">
+                    <div class="avatar-placeholder"><img src="assets\media\content\post\reviews\1.jpg" alt="avatar"
+                        class="img-responsive"></div>
+                    <div class="comment-inner">
+                      <header class="comment-header">
+                        <p class="comment-author">{{item.UserName}}</p>
+                        <time datetime="2012-10-27" class="comment-datetime">{{item.AddedDate | date: 'dd-MM-yyyy'}}</time>
+                      </header>
+                      <div class="comment-body">
+                        <p>{{item.CommentDetail}}</p>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </section> 
+             <section class="section-reply-form">
+              <h3 class="comment-title ui-title-inner ui-title-inner_spacing_sm">اترك تعليق</h3>
+              <div class="decor-left"></div>
+              <form [formGroup]="Form" class="form-reply ui-form">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <textarea formControlName="CommentDetail" rows="5" placeholder="comment"
+                      class="form-control"></textarea>
+                    <button [disabled]="!Form.valid" (click)="saveComment()" style="background: #002d3e;padding:15px"
+                      class="ui-form__btn btn btn-xs btn-info btn-effect">اضاقة التعليق</button>
+                  </div>
+                </div>
+              </form>
+            </section> 
+          </div>
+
+      <div class="col-sm-4 col-sm-pull-8">
+        <aside class="sidebar">
+          <section class="widget widget2">
+            <h2 class="widget-title ui-title-inner text-right">اخر الأخبار </h2>
+
+            <owl-carousel [options]="SlideOption" [items]="Image" [carouselClasses]="['owl-theme', 'sliding']">
+              <div class="item" *ngFor="let item of LatestNews">
+                <div class="" style="align-content: center ; text-align: center" (click)="goToDet(item.Id)" >
+                  <img style="height:240px;width:100%" src={{item.Image}} />
+                  <div style="    position: absolute;
+                  background: white;
+                  top: 140px;
+                  right: 31px;
+                  padding: 10px 10px 0 10px;
+                  width: 300px;">
+                      <div class="calendarr">
+                          <span>{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                          <span style="margin-left:5px"><i style="color: #3eafb8" class="fa fa-calendar"></i></span>
+                        </div>
+                        <p class="titleOfParg">{{item.Name}}</p>
+                  </div>
+                </div>
+              </div>
+            </owl-carousel>
+          </section>
+          <section class="widget widget2">
+            <h2 class="widget-title ui-title-inner text-right">اخبار الثقافة</h2>
+   
+            <div *ngFor="let item of CultureNews" (click)="goToDet(item.Id)">
+              <img src="{{item.Image}}" alt="Foto" class="img-responsive imageAnmition" 
+              style="width: 100%; height: 250px;">
+              <div class="containerOfCulture">
+                <div class="calnderOfCulture">
+                  <span style="color: #9e9999">{{item.Date | date: 'dd-MM-yyyy'}}</span>
+                  <span style="margin-left:5px ;color: #3eafb8 "><i class="fa fa-calendar"></i></span>
+                </div>
+                <p><a >{{item.Name}}</a></p>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+     
+    </div>
+  </div>
+</div>
+
+<button style="display: none" data-toggle="modal" data-target="#myModal" id="myModalaa">click</button>

@@ -1,0 +1,65 @@
+<div class="section-type-k">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <aside class="sidebar" *ngIf="ApplayForm">
+                  <div class="widget-latest text-center ok">
+                      <a (click)="goToDet()"class="btn btn-primary btn-lg dark-blue"><i class="fa fa-check"></i> التحاق </a>
+                  </div>
+              </aside>
+            </div>
+            <div class="col-md-8" style="text-align: right">
+              <article class="post post-full clearfix">
+                <iframe  width="755" class="e2e-iframe-trusted-src" height="600" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [src]="shareLink"></iframe>
+
+                <div class="entry-main">
+                    <ul class="entry-meta meta-color-dark">
+                        <li>{{title}}<i class="fa fa-tag"></i></li>
+                        <li>{{startDate | date : 'dd-MM-yyyy'}}<i class="fa fa-calendar"></i></li>
+                      </ul>
+                      <h3  *ngFor="let item of etnites" >{{item}}</h3>
+                      <hr>
+      
+                  <div class="entry-content">
+                    <div class="Des" [innerHTML]="desc"></div>
+
+                  </div>
+                </div>
+              </article>
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                      شروط المسابقة</a>
+                    </h4>
+                  </div>
+                  <div id="collapse1" class="panel-collapse collapse in">
+                    <div  [innerHTML]="CompetitionsRoles" class="panel-body"></div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                      شروط اللاجنة المنظمة</a>
+                    </h4>
+                  </div>
+                  <div id="collapse2" class="panel-collapse collapse">
+                    <div [innerHTML]="rulesComm" class="panel-body"></div>
+                  </div>
+                </div>
+                
+              </div>
+              <!-- <button class="btn btn-primary" style="margin-bottom: 10px" >التحاق</button> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      
+
+      <button style="display: none" data-toggle="modal" data-target="#myModal" id="myModalaa">click</button>
+

@@ -1,0 +1,101 @@
+<div class="section-type-k">
+  <div class="container">
+    <div class="row orderDisplay" *ngIf="!showIfBooking">
+      <div class="col-md-4 secOrder">
+        <aside class="sidebar">
+          <section class="widget">
+            <h2 class="widget-title ui-title-inner text-right">تابعنا</h2>
+            <div class="decor-right"></div>
+            <div class="row socialOnly">
+              <div class="col-md-5 col-md-offset-2">
+                <a class="faceBook" target="_blank"
+                  href="https://www.facebook.com/Culture-Gate-103834857931056/?__tn__=%2Cd%2CP-R&eid=ARCqmJ0rfdS5oaPqLjtfFvrs8qCzM53J-MI_hROHKC54CPe-Qlvm6fAhL_vbUtnvnqWXNDt4YgTpxezm"><i
+                    class="fa fa-facebook-square"></i> </a>
+              </div>
+              <div class="col-md-5">
+                <a class="youtube" target="_blank"
+                  href="https://www.youtube.com/channel/UCGw9Yn-_j6CpysvnhVUeT4w/about"><i
+                    class="fa fa-youtube-square"></i></a>
+              </div>
+            </div>
+          </section>
+
+        </aside>
+      </div>
+      <div class="col-md-8 firstOrder" style="text-align: right">
+        <article class="post post-full clearfix">
+          <div class="entry-media"><img src="https://via.placeholder.com/750x500" class="img-responsive"></div>
+          <div class="entry-main">
+            <div class="entry-header categoriName">
+              <!-- <span class="label bg-3">{{EntityName}}</span> -->
+              <h2 class="entry-title titleOfHead"><a>{{Name}}</a></h2>
+            </div>
+            <div class="entry-meta">
+              من
+              <span class="categoryDate color-4">{{WorkFrom}}</span>
+              الى
+              <span class="categoryDate color-4">{{WorkTo}}</span>
+              <span style="margin-left:5px"><i class="fa fa-calendar"></i></span>
+            </div>
+            <div class="entry-content">
+              <span class="workDays">أيام العمل</span>
+              <p class="days">{{WorkDays}}</p>
+              <div class="text-center addBD">
+                <a class="pub text-center" data-toggle="modal" data-target="#conHall">احجز</a>
+              </div>
+              <div>
+                <button class=" btn tags " *ngFor="let tag of TagsList">{{tag}}</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="main" *ngIf="showIfBooking">
+      <div class="masg">
+        <h1>جاري مراجعة الطلب</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ConferenceHall Modal -->
+<div class="modal fade" id="conHall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-right">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-right" id="myModalLabel">الحجز</h4>
+      </div>
+      <form [formGroup]="conForm"  class="form-group">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 padBot">
+              <input type="date" class="form-control col-md-10 resI" formControlName="Date">
+              <label class="col-md-2">التاريخ</label>
+            </div>
+            <div class="col-md-12 padBot">
+              <select id="hours" class="form-control col-md-10" formControlName="resFrom">
+                <option *ngFor="let item of workHours" value="{{item}}">{{item}}</option>
+              </select>
+              <label class="col-md-2" for="hours">من الساعة</label>
+            </div>
+            <div class="col-md-12 padBot">
+              <select id="hours" class="form-control col-md-10" formControlName="resTo">
+                <option *ngFor="let item of workHours" value="{{item}}">{{item}}</option>
+              </select>
+              <label class="col-md-2" for="hours">الى الساعة</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="setHall()" data-dismiss="modal" class="btn btn-primary">احجز</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ConferenceHall Modal -->
